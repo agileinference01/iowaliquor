@@ -1,0 +1,47 @@
+table DimProducts
+	lineageTag: 76ecce1e-ea9e-4fdd-b5c4-0707effa79f4
+
+	column category
+		dataType: int64
+		formatString: 0
+		lineageTag: e52fc21a-70e9-4158-9b86-0cd8adfe4e7c
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 5264161d-8983-4e60-a4d0-62e890879fb0
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_description
+		dataType: string
+		lineageTag: dcd59722-3de2-4646-82f4-cea8f9ef000a
+		summarizeBy: none
+		sourceColumn: item_description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimProducts = m
+		mode: import
+		source =
+				let
+				    Source = FactMain,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"category", "vendor_number", "item_number", "item_description"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each [category] <> null and [category] <> ""),
+				    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"item_number", Order.Ascending}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Sorted Rows",{"vendor_number"}),
+				    #"Removed Duplicates1" = Table.Distinct(#"Removed Columns", {"item_number"})
+				in
+				    #"Removed Duplicates1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

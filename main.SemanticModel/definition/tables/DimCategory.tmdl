@@ -1,0 +1,35 @@
+table DimCategory
+	lineageTag: 2268475c-569c-47a8-b4ff-481399bfd168
+
+	column category
+		dataType: int64
+		formatString: 0
+		lineageTag: 51e40ea2-95b8-45bd-9c41-eeb67a3a05c3
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_name
+		dataType: string
+		lineageTag: 6996cc0d-a0e7-4b14-8fd7-f86d8a574814
+		summarizeBy: none
+		sourceColumn: category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCategory = m
+		mode: import
+		source =
+				let
+				    Source = FactMain,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"category", "category_name"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each [category] <> null and [category] <> "")
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,162 @@
+table _Calendar
+	lineageTag: 5219ee4d-85c4-4baf-a30f-a189df2daf1c
+
+	column Date
+		formatString: General Date
+		lineageTag: acd16ebb-f0a6-4c30-9089-3652c073cba0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 9be3cf30-09a9-46ec-8f33-c15cdb7e24ca
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 7efb8536-2807-4119-b2b6-2d9a89e1ef41
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 64d8eadc-fe22-4df9-acfd-c29c97f51aab
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		formatString: 0
+		lineageTag: 9ff34d98-ee2d-4912-a0d5-d225fd5a16bf
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNumber]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		formatString: 0
+		lineageTag: 445b048f-aabd-4ebe-9f0b-4a828655c59c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		lineageTag: 465142b7-042d-4b8d-8b40-9eb1d2624192
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [YearMonth]
+		sortByColumn: OrderMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: 1cba5157-cd11-423c-9fa6-13f7bd895bfc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		lineageTag: b0bd00a7-86d7-42a5-b0f5-09661d290d02
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartOfWeek
+		formatString: General Date
+		lineageTag: a5804bc8-8798-45e1-91cc-68e6c0a032fc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [StartOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndOfWeek
+		formatString: General Date
+		lineageTag: fe5d7458-a233-4778-8c4d-d5775d30e4ae
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [EndOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartOfMonth
+		formatString: General Date
+		lineageTag: e3408285-3576-444a-b4e5-35c65e46c70c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [StartOfMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndOfMonth
+		formatString: General Date
+		lineageTag: 083bb77e-df71-4c99-a30e-513cdf2bbe8c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [EndOfMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderMonth
+		formatString: 0
+		lineageTag: 0da17c72-f348-4fe3-90a8-50f65d66a0b3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [OrderMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderQuarter
+		formatString: 0
+		lineageTag: 805e084c-9797-4dd9-a320-4ebc7802dac7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [OrderQuarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Calendar = calculated
+		mode: import
+		source =
+				
+				VAR StartDate = CALCULATE(MIN(FactMain[date]), all(FactMain[date]))  -- Set your start date
+				VAR EndDate = CALCULATE(MAX(FactMain[date]), all(FactMain[date])) -- Set your end date
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR(StartDate, EndDate),
+				    "Year", YEAR([Date]),
+				    "Quarter", "Q" & QUARTER([Date])&"-"&YEAR([Date]),
+				    "Month", FORMAT([Date], "MMMM"),
+				    "MonthNumber", MONTH([Date]),
+				    "Week", WEEKNUM([Date]),
+				    "YearMonth", FORMAT([Date], "MMM-YYYY"),
+				    "Day", DAY([Date]),
+				    "DayOfWeek", FORMAT([Date], "dddd"),
+				    "StartOfWeek", [Date] - WEEKDAY([Date], 2) + 1,  -- Monday as the start of the week
+				    "EndOfWeek", [Date] - WEEKDAY([Date], 2) + 7,    -- Sunday as the end of the week
+				    "StartOfMonth", EOMONTH([Date], -1) + 1,         -- First day of the month
+				    "EndOfMonth", EOMONTH([Date], 0),                  -- Last day of the month
+				    "OrderMonth", (year([Date])*100) + MONTH([Date]),
+				    "OrderQuarter", (YEAR([Date])*10) + QUARTER([Date])
+				)
+
+	annotation PBI_Id = 4045f4cb3c9e41668c0dba40b759bb09
+

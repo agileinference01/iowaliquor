@@ -1,0 +1,62 @@
+table _Metrics
+	lineageTag: 3944f4c7-8498-4dca-aad7-eb7985c5ba43
+
+	column Name
+		dataType: string
+		lineageTag: e926667a-ed18-46f8-a1e9-7042d0e7feec
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Measure
+		dataType: string
+		lineageTag: 0410ca42-c0ac-4733-a8de-7170d136d241
+		summarizeBy: none
+		sourceColumn: Measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column Direction
+		dataType: string
+		lineageTag: a1f3b0b0-ec32-4117-9b3b-14ba0ee76ebd
+		summarizeBy: none
+		sourceColumn: Direction
+
+		annotation SummarizationSetBy = Automatic
+
+	column Format
+		dataType: string
+		lineageTag: 57e63fd5-708b-4085-bb08-5f91b750c256
+		summarizeBy: none
+		sourceColumn: Format
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: string
+		lineageTag: ae4169b7-e53a-40bc-b78a-a83c51dd30f9
+		summarizeBy: none
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Metrics = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\PHUyJo3\OneDrive - NESTLE\Documents\projects\iowa\references\metrics.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Sheet1_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Name", type text}, {"Measure", type text}, {"Direction", type text}, {"Format", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

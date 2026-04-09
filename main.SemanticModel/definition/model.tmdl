@@ -1,0 +1,42 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transform File from iowa'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transform File from iowa\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["FactMain","Sample File","Parameter1","Transform Sample File","Transform File","_Intervals","_Measures","DimStores","DimCategory","DimProducts","DimVendors","DmPacks","DimCounty","_Metrics","GoalMain"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FactMain
+ref table _Calendar
+ref table '_Visual Calendar'
+ref table _Intervals
+ref table _Measures
+ref table DimStores
+ref table DimCategory
+ref table DimProducts
+ref table DimVendors
+ref table DmPacks
+ref table DimCounty
+ref table _Metrics
+ref table GoalMain
+ref table 'Feature Parameters'
+ref table 'Level 1 Parameter'
+ref table 'Level 2 Parameter'
+ref table 'Level 3 Parameter'
+
+ref cultureInfo en-US
+

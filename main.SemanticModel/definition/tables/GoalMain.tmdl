@@ -1,0 +1,274 @@
+table GoalMain
+	lineageTag: 9c8c28f2-1146-4ba8-ad64-9334a21d2e7f
+
+	column 'Source.Name'
+		dataType: string
+		lineageTag: 5a6f03cc-e9fe-47a4-88b5-31cd7974ff45
+		summarizeBy: none
+		sourceColumn: Source.Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_and_item_number
+		dataType: string
+		lineageTag: 00b8baa8-8fe5-44ee-bc8d-8a0fff97b2a8
+		summarizeBy: none
+		sourceColumn: invoice_and_item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dace2436-e8a6-4858-a0c7-8717e2cea651
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column store_number
+		dataType: int64
+		formatString: 0
+		lineageTag: f52482c4-7ffd-4280-ba2e-19bea85ad84c
+		summarizeBy: none
+		sourceColumn: store_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_name
+		dataType: string
+		lineageTag: 678bcf97-6107-406d-a12d-87e626c78f72
+		summarizeBy: none
+		sourceColumn: store_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column address
+		dataType: string
+		lineageTag: f3c4c6d3-34a7-4f63-965c-f59e84525fa3
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 7f61eddf-a5ee-413e-b7e7-435b893e0d5e
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column zip_code
+		dataType: int64
+		formatString: 0
+		lineageTag: 277f8c20-1c69-47f9-b789-bdf6a9100aff
+		summarizeBy: sum
+		sourceColumn: zip_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_location
+		dataType: string
+		lineageTag: c59d2a70-9f57-4d7d-bd52-8aa80b970297
+		summarizeBy: none
+		sourceColumn: store_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 8778bc15-1654-4e11-bfd2-ff077de5cc63
+		summarizeBy: none
+		sourceColumn: county_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column county
+		dataType: string
+		lineageTag: 82239c89-060a-4008-bd37-fbd1a3bca90c
+		summarizeBy: none
+		sourceColumn: county
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: int64
+		formatString: 0
+		lineageTag: ca272a0e-430f-44b7-99e3-11b3e3c78ee8
+		summarizeBy: sum
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_name
+		dataType: string
+		lineageTag: d6347d3b-458a-4127-a666-d314e3e65988
+		summarizeBy: none
+		sourceColumn: category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendor_number
+		dataType: int64
+		formatString: 0
+		lineageTag: b6c6eee6-1229-4caa-9adc-a092f54fae85
+		summarizeBy: none
+		sourceColumn: vendor_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendor_name
+		dataType: string
+		lineageTag: f578b32c-04fa-4071-a1ed-44f21e866a8f
+		summarizeBy: none
+		sourceColumn: vendor_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 93b65586-1881-453c-ad32-622b84e9b6cd
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_description
+		dataType: string
+		lineageTag: cb2b9cbe-f005-46ce-baf6-d267394fd816
+		summarizeBy: none
+		sourceColumn: item_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column pack
+		dataType: int64
+		formatString: 0
+		lineageTag: 46cdad18-5818-44ec-a57d-aed8d86aa52f
+		summarizeBy: sum
+		sourceColumn: pack
+
+		annotation SummarizationSetBy = Automatic
+
+	column bottle_volume_ml
+		dataType: int64
+		formatString: 0
+		lineageTag: a5a01d54-dbdb-445a-ab4d-c3e5deee442a
+		summarizeBy: sum
+		sourceColumn: bottle_volume_ml
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_bottle_cost
+		dataType: double
+		lineageTag: ed5606b5-f30d-4ad8-8c43-c706b2b47c28
+		summarizeBy: sum
+		sourceColumn: state_bottle_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column state_bottle_retail
+		dataType: double
+		lineageTag: db56596d-438c-4b08-a4c4-259257acd596
+		summarizeBy: sum
+		sourceColumn: state_bottle_retail
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bottles_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: 551c1bfe-b2d7-45d9-94ca-2af8cc5a77de
+		summarizeBy: sum
+		sourceColumn: bottles_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	column sale_dollars
+		dataType: double
+		lineageTag: 78fb56b7-c6d2-4578-bccd-fd7b7f19a3d8
+		summarizeBy: sum
+		sourceColumn: sale_dollars
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume_sold_liters
+		dataType: double
+		lineageTag: 64dd32a4-04de-4ed4-968e-30809cddb8f0
+		summarizeBy: sum
+		sourceColumn: volume_sold_liters
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume_sold_gallons
+		dataType: double
+		lineageTag: 1d167dc8-8978-45c0-ad31-6b71162c50f6
+		summarizeBy: sum
+		sourceColumn: volume_sold_gallons
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bottles_sold_goal
+		dataType: int64
+		formatString: 0
+		lineageTag: dfa9c1e3-7ac8-4042-989c-b65e925b6064
+		summarizeBy: sum
+		sourceColumn: bottles_sold_goal
+
+		annotation SummarizationSetBy = Automatic
+
+	column sale_dollars_goal
+		dataType: double
+		lineageTag: 8a6f734b-7f53-4a02-801f-b874643b7699
+		summarizeBy: sum
+		sourceColumn: sale_dollars_goal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume_sold_liters_goal
+		dataType: double
+		lineageTag: 7eae42e8-8f1f-4ccf-9c1b-e508d67a71a7
+		summarizeBy: sum
+		sourceColumn: volume_sold_liters_goal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition GoalMain = m
+		mode: import
+		source =
+				let
+				    Source = FactMain,
+				    #"Duplicated Column" = Table.DuplicateColumn(Source, "bottles_sold", "bottles_sold - Copy"),
+				    #"Removed Columns" = Table.RemoveColumns(#"Duplicated Column",{"bottles_sold - Copy"}),
+				    #"Added Custom" = Table.AddColumn(#"Removed Columns", "bottles_sold_goal", each [bottles_sold] * (Number.RandomBetween(80,156)/100)),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"bottles_sold_goal", Int64.Type}}),
+				    #"Added Custom1" = Table.AddColumn(#"Changed Type", "sale_dollars_goal", each [bottles_sold_goal]*[state_bottle_retail]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"sale_dollars_goal", type number}}),
+				    #"Added Custom2" = Table.AddColumn(#"Changed Type1", "volume_sold_liters_goal", each ([volume_sold_liters]/[bottles_sold])*[bottles_sold_goal]),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"volume_sold_liters_goal", type number}})
+				in
+				    #"Changed Type2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

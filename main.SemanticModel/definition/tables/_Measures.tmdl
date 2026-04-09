@@ -1,0 +1,376 @@
+table _Measures
+	lineageTag: a9f69190-f3cd-4eff-9344-718aff4d1d2a
+
+	measure 0000_Blank = BLANK()
+		formatString: 0
+		lineageTag: e2dfe859-b2c8-44a5-958f-58ff3831383c
+
+	measure '0100_Number of Bottles Sold' = sum(GoalMain[bottles_sold])
+		formatString: #,0
+		lineageTag: 7574c851-ab32-45a8-a753-e50191c8ad17
+
+	measure '0101_Bottle Volume Sold' = sum(GoalMain[volume_sold_liters])
+		lineageTag: 5764815b-e35c-4995-8e4a-da9ee8a5c251
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0102_Sales Amount' = sum(GoalMain[sale_dollars])
+		lineageTag: 01452009-00c4-44df-8217-91f7812e017e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0104_Cost of Goods Sold' = SUMX(GoalMain, GoalMain[state_bottle_cost]*GoalMain[bottles_sold])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 2051b8de-07da-4f2f-aa1a-79654333a078
+
+	measure '0105_Gross Profit' = [0102_Sales Amount]-[0104_Cost of Goods Sold]
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 6462911a-de9d-443e-aeb9-6229ca2f8749
+
+	measure '0106_Gross Margin Pct' = ```
+			
+			 var _num = [0105_Gross Profit]
+			 var _den = [0102_Sales Amount]
+			 RETURN
+			 DIVIDE( _num, _den, BLANK())
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 62c8dfb4-657b-40b5-a62b-c939c5a7b87d
+
+	measure '0107_Selected Measure Actual' = ```
+			
+			var _sel = SELECTEDVALUE(_Metrics[Name], "Sales")
+			
+			RETURN
+			SWITCH(_sel,
+			"Bottles Sold", [0100_Number of Bottles Sold],
+			"Bottle Volume Sold", [0101_Bottle Volume Sold],
+			"Sales", [0102_Sales Amount],
+			"Cost of Goods Sold", [0104_Cost of Goods Sold],
+			"Gross Profit", [0105_Gross Profit],
+			"Gross Margin Pct", [0106_Gross Margin Pct]
+			)
+			
+			```
+		lineageTag: cd79f7ca-1adc-4ac5-9bf4-64dfa5c648cd
+
+		formatStringDefinition =
+				var _sel = SELECTEDVALUE(_Metrics[Name])
+				RETURN
+				FormatMeasure(_sel)
+
+	measure '0001_Max Date' = max(_Calendar[Date])
+		formatString: General Date
+		lineageTag: 417f98fb-e2b7-4042-8215-0c7bda5dd3d9
+
+	measure '0002_Min Date' = MIN(_Calendar[Date])
+		formatString: General Date
+		lineageTag: bf68e67a-b7ea-47cb-bc0c-787add00b090
+
+	measure '0108_Minimum Date for Current Period' =
+			
+			var _min = [0002_Min Date]
+			var _max = [0001_Max Date]
+			var _interval = SELECTEDVALUE(_Intervals[Interval])
+			var _datefiltered = ISFILTERED(_Calendar[Date])
+			var _monthfiltered = ISFILTERED(_Calendar[YearMonth])
+			var _nonfiltered =
+			SWITCH(_interval,
+			"Daily", _max-1,
+			"Weekly", WeekStart(_max),
+			"Monthly", MonthStart(_max),
+			"Quarterly", QuarterStart(_max),
+			"Yearly", YearStart(_max)
+			)
+			var _filtered =
+			SWITCH(_interval,
+			"Daily", [0002_Min Date]-1,
+			"Weekly", WeekStart(_min),
+			"Monthly", MonthStart(_min),
+			"Quarterly", QuarterStart(_min),
+			"Yearly", YearStart(_min)
+			)
+			RETURN
+			if(_datefiltered=TRUE() || _monthfiltered=TRUE(), _filtered, _nonfiltered)
+		formatString: General Date
+		lineageTag: 400dd193-bb90-4739-94ae-e9097cc1f657
+
+	measure '0109_Maximum Date for Previous Period' = ```
+			
+			var _min = [0110_Minimum Date for Previous Period]
+			var _max = [0108_Minimum Date for Current Period]
+			var _diff = DATEDIFF(_min, _max, DAY)
+			var _interval = SELECTEDVALUE(_Intervals[Interval])
+			var _datefiltered = ISFILTERED(_Calendar[Date])
+			var _monthfiltered = ISFILTERED(_Calendar[YearMonth])
+			var _maxdate = if(_datefiltered=TRUE() || _monthfiltered=TRUE(), _max, _min+_diff)
+			
+			RETURN
+			_maxdate-1
+			
+			```
+		formatString: General Date
+		lineageTag: b2e5f75c-13ec-4ce9-bfda-22d5159a1ef6
+
+	measure '0110_Minimum Date for Previous Period' =
+			
+			var _min = [0002_Min Date]
+			var _max = [0108_Minimum Date for Current Period]-1
+			var _interval = SELECTEDVALUE(_Intervals[Interval])
+			var _datefiltered = ISFILTERED(_Calendar[Date])
+			var _monthfiltered = ISFILTERED(_Calendar[YearMonth])
+			var _nonfiltered =
+			SWITCH(_interval,
+			"Daily", _max-1,
+			"Weekly", WeekStart(_max-6),
+			"Monthly", EOMONTH(_max+1,-2)+1,
+			"Quarterly", QuarterStart(_max-91),
+			"Yearly", date(YEAR(_max+1)-1,1,1)
+			)
+			var _filtered =
+			SWITCH(_interval,
+			"Daily", [0002_Min Date]-1,
+			"Weekly", WeekStart(_min-7),
+			"Monthly", MonthStart(_min-30),
+			"Quarterly", QuarterStart(_min-92),
+			"Yearly", YearStart(_min)
+			)
+			
+			RETURN
+			if(_datefiltered=TRUE() || _monthfiltered=TRUE(), _filtered, _nonfiltered)
+		formatString: General Date
+		lineageTag: 629136be-589b-404c-a6d7-4d2a281f84bc
+
+	measure '0111_Selected Measure Actual CP' = ```
+			
+			 var _max = [0001_Max Date]
+			 var _min = [0108_Minimum Date for Current Period]
+			 
+			 RETURN
+			 CALCULATE( [0107_Selected Measure Actual], 
+			 FILTER(GoalMain, GoalMain[date]>=_min && GoalMain[date]<=_max)
+			 )
+			```
+		lineageTag: c4413549-5bb6-40bc-905e-dbeaec1da6bd
+
+		formatStringDefinition =
+				var _sel = SELECTEDVALUE(_Metrics[Name])
+				RETURN
+				FormatMeasure(_sel)
+
+	measure '0112_Moving Average Goal' = ```
+			
+			VAR CurrentDate =
+			    MAX ( '_Calendar'[Date] )  -- Get the current date in context
+			VAR StartDate =
+			    [0108_Minimum Date for Current Period] - 90     -- Go back 180 days
+			RETURN
+			CALCULATE (
+			    SUMX (
+			        VALUES ( '_Calendar'[Date] ),  -- Iterate over each date in the range
+			        [0107_Selected Measure Actual]             -- Replace with your base measure (e.g., [Total Sales])
+			    ),
+			    FILTER (
+			        ALL ( _Calendar ),
+			        _Calendar[Date] > StartDate &&
+			        _Calendar[Date] <= CurrentDate
+			    )
+			)
+			
+			```
+		lineageTag: 0db599b0-417f-4681-9fc8-e3cbe439f76d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0200_Number of Bottles Sold Goal' = sum(GoalMain[bottles_sold_goal])
+		formatString: 0
+		lineageTag: ff0f9f3f-1756-4cab-bd37-f802d177078b
+
+	measure '0201_Bottle Volume Sold Goal' = sum(GoalMain[volume_sold_liters_goal])
+		lineageTag: 2e520c17-da83-4214-8fbe-adefddf1a7d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0202_Sales Amount Goal' = sum(GoalMain[sale_dollars_goal])
+		lineageTag: a4568785-e16f-4a31-856b-b1dea7f15be6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0204_Cost of Goods Sold Goal' = SUMX(GoalMain, GoalMain[state_bottle_cost]*GoalMain[bottles_sold_goal])
+		lineageTag: cdbc872b-6e2e-4697-ba77-d40c8cfcb47d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0205_Gross Profit Goal' = [0202_Sales Amount Goal]-[0204_Cost of Goods Sold Goal]
+		lineageTag: 9540ddff-22a6-4f3c-bc0b-9d5113eff277
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0206_Gross Margin Pct Goal' = ```
+			
+			 var _num = [0205_Gross Profit Goal]
+			 var _den = [0202_Sales Amount Goal]
+			 RETURN
+			 DIVIDE( _num, _den, BLANK())
+			```
+		lineageTag: b82a8c70-4911-4160-9724-34dd7a08ae18
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0207_Selected Measure Goal' =
+			
+			var _sel = SELECTEDVALUE(_Metrics[Name], "Sales")
+			
+			RETURN
+			SWITCH(_sel,
+			"Bottles Sold", [0200_Number of Bottles Sold Goal],
+			"Bottle Volume Sold", [0201_Bottle Volume Sold Goal],
+			"Sales", [0202_Sales Amount Goal],
+			"Cost of Goods Sold", [0204_Cost of Goods Sold Goal],
+			"Gross Profit", [0205_Gross Profit Goal],
+			"Gross Margin Pct", [0206_Gross Margin Pct Goal]
+			)
+		lineageTag: d73b9ef3-c746-49a0-b6a2-95272584ce38
+
+		formatStringDefinition =
+				var _sel = SELECTEDVALUE(_Metrics[Name])
+				RETURN
+				FormatMeasure(_sel)
+
+	measure '0211_Selected Measure Goal CP' = ```
+			
+			 var _max = [0001_Max Date]
+			 var _min = [0108_Minimum Date for Current Period]
+			 
+			 RETURN
+			 CALCULATE( [0207_Selected Measure Goal], 
+			 FILTER(GoalMain, GoalMain[date]>=_min && GoalMain[date]<=_max)
+			 )
+			```
+		lineageTag: f6e95650-c993-4a36-a3bf-1bfc608baa95
+
+		formatStringDefinition =
+				var _sel = SELECTEDVALUE(_Metrics[Name])
+				RETURN
+				FormatMeasure(_sel)
+
+	measure '0300_Selected Measure Variance to Goal' = [0107_Selected Measure Actual]-[0207_Selected Measure Goal]
+		lineageTag: 49bf54b9-fc34-4ab9-a63d-a5c273a94926
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0301_Selected Measure Variance to Goal CP' = [0111_Selected Measure Actual CP]-[0211_Selected Measure Goal CP]
+		lineageTag: f6a47099-e5b0-495d-8f9d-b1ad6de76ff5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0303_Selected Measure Pct to Goal' = PercentToGoal([0107_Selected Measure Actual], [0207_Selected Measure Goal],SELECTEDVALUE(_Metrics[Name]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d09b5ce4-9dd2-4ba9-ae5b-a8001e4e4c94
+
+	measure '0303_Selected Measure Pct to Goal CP' =
+			
+			var _sel = SELECTEDVALUE(_Metrics[Name])
+			RETURN
+			PercentToGoal([0111_Selected Measure Actual CP], [0211_Selected Measure Goal CP], _sel)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d768cb9f-e8a8-4de3-81c1-5044d90696fc
+
+	measure '0004_Curent Period Label' = [0108_Minimum Date for Current Period] & "-" & [0001_Max Date]
+		lineageTag: 61a46121-7954-4b54-b954-55f26cc89879
+
+	measure '0005_Selected Measure Variance Label' =
+			
+			var _sel = SELECTEDVALUE(_Metrics[Name])
+			RETURN
+			ShortenNumber([0301_Selected Measure Variance to Goal CP], _sel) & " " & DirectionArrow([0303_Selected Measure Pct to Goal CP], _sel) & " " & ShortenNumber([0211_Selected Measure Goal CP], _sel) & UNICHAR(10) & FORMAT([0303_Selected Measure Pct to Goal CP], "Percent") & " to goal"
+		lineageTag: 434295e2-4855-4697-80ca-4f0a83c1d1b4
+
+	measure '0006_Variance to Goal Color CP' = DirectionColor([0303_Selected Measure Pct to Goal CP])
+		lineageTag: ee940469-cda9-44fe-98b8-024803422622
+
+	measure 0007_Direction =
+			
+			VAR _sel = SELECTEDVALUE(_Metrics[Name])
+			RETURN
+			MeasureDirection(_sel)
+		lineageTag: 074844b0-f281-4f4b-bd37-3795b799b0a1
+
+	measure '0212_Selected Measure Actual PP' = ```
+			
+			 var _max = [0109_Maximum Date for Previous Period]
+			 var _min = [0110_Minimum Date for Previous Period]
+			 
+			 RETURN
+			 CALCULATE( [0107_Selected Measure Actual], 
+			 FILTER(GoalMain, GoalMain[date]>=_min && GoalMain[date]<=_max)
+			 )
+			```
+		lineageTag: 3e1ee25f-9b0a-40ed-ba94-b016b8de1baa
+
+		formatStringDefinition =
+				var _sel = SELECTEDVALUE(_Metrics[Name])
+				RETURN
+				FormatMeasure(_sel)
+
+	measure '0213_Selected Measure Delta PP' =
+			
+			VAR _actual = [0111_Selected Measure Actual CP]
+			VAR _prev = [0212_Selected Measure Actual PP]
+			 RETURN
+			_actual - _prev
+		lineageTag: 296e1507-32ed-4f2f-b679-debd85528ce4
+
+		formatStringDefinition =
+				var _sel = SELECTEDVALUE(_Metrics[Name])
+				RETURN
+				FormatMeasure(_sel)
+
+	measure '0214_Selected Measure Delta Pct PP' =
+			
+			VAR _actual = [0111_Selected Measure Actual CP]
+			VAR _prev = [0212_Selected Measure Actual PP]
+			 RETURN
+			DIVIDE([0213_Selected Measure Delta PP], [0212_Selected Measure Actual PP], BLANK())
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0c05770f-b96b-449d-9681-c3480c419c4a
+
+	measure '0008_Previous Period Label' = [0110_Minimum Date for Previous Period] & "-" & [0109_Maximum Date for Previous Period]
+		lineageTag: f477e79a-710d-4ad8-9c9a-d2b6138977b4
+
+	measure '0009_Selected Measure Delta Label' = ```
+			
+			VAR _sel = SELECTEDVALUE(_Metrics[Name])
+			RETURN
+			FORMAT([0214_Selected Measure Delta Pct PP], "Percent") & " | " &  ShortenNumber([0213_Selected Measure Delta PP], _sel) & " " & DeltaArrow([0214_Selected Measure Delta Pct PP], _sel) & " " & ShortenNumber([0212_Selected Measure Actual PP], _sel) 
+			```
+		lineageTag: dd51fdbf-21db-468a-959e-dae2e9fcc179
+
+	measure '0010_Selected Measure Delta Color' = DeltaColor([0214_Selected Measure Delta Pct PP])
+		lineageTag: 8dc9400f-ae9e-4094-b3d8-6617470e4d4c
+
+	measure '0011_Selected Measure Card Title Label' = SELECTEDVALUE(_Metrics[Name])
+		lineageTag: bd578f49-e354-4670-9769-1b8dbeac6df6
+
+	measure '0012_Actual Variance to Goal Color' = DirectionColor([0303_Selected Measure Pct to Goal])
+		lineageTag: 32d50d7a-4b2b-46f3-87a5-075ec2eb4041
+
+	column Column1
+		dataType: string
+		lineageTag: d6c3a85b-c1be-4c32-b476-dc06becb7667
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

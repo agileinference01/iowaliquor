@@ -1,0 +1,54 @@
+relationship AutoDetected_4f011652-2d1c-4fc3-8b78-de18d15d46fc
+	fromColumn: FactMain.category
+	toColumn: DimCategory.category
+
+relationship AutoDetected_29ca6ce6-ebab-40d7-a3c2-d2e51cf51c7f
+	fromColumn: DimProducts.category
+	toColumn: DimCategory.category
+
+relationship 57a8f1b7-6bc7-a583-2168-862a54b702a3
+	toCardinality: many
+	fromColumn: FactMain.item_number
+	toColumn: DimProducts.item_number
+
+relationship 7aca2915-e089-fe78-c237-e225f638373f
+	fromColumn: FactMain.county_number
+	toColumn: DimCounty.county_number
+
+relationship bde4bd7e-9072-c815-ad99-ad1f7b6c693a
+	fromColumn: FactMain.store_number
+	toColumn: DimStores.store_number
+
+relationship a36d8e90-4586-5d12-568c-93a3d61b6983
+	fromColumn: FactMain.vendor_number
+	toColumn: DimVendors.vendor_number
+
+relationship ec731353-dbe3-c776-7b0e-cdbc6b874ddb
+	fromColumn: FactMain.date
+	toColumn: _Calendar.Date
+
+relationship AutoDetected_851a2514-a241-4812-b213-e782c510ae5a
+	fromColumn: GoalMain.store_number
+	toColumn: DimStores.store_number
+
+relationship AutoDetected_da25fac7-2b0a-4f3e-9c79-646b9818a19d
+	fromColumn: GoalMain.county_number
+	toColumn: DimCounty.county_number
+
+relationship AutoDetected_8667cccc-c2a1-49fd-99dd-1e6d8aa0486f
+	fromColumn: GoalMain.vendor_number
+	toColumn: DimVendors.vendor_number
+
+relationship AutoDetected_554764e0-2f61-402c-b2c4-892420fdac27
+	fromColumn: GoalMain.item_number
+	toColumn: DimProducts.item_number
+
+relationship 86be1718-7d4f-8e1e-8fa1-d5e2463628df
+	fromColumn: '_Visual Calendar'.Interval
+	toColumn: _Intervals.Interval
+
+relationship 96e17414-9719-8072-211c-9c7378d06d0a
+	crossFilteringBehavior: bothDirections
+	fromColumn: '_Visual Calendar'._Calendar_Date
+	toColumn: _Calendar.Date
+

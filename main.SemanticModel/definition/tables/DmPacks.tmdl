@@ -1,0 +1,38 @@
+table DmPacks
+	lineageTag: 178a95ed-4430-45c6-911f-24ee7c1d7994
+
+	column pack
+		dataType: int64
+		formatString: 0
+		lineageTag: 6863dbcc-bc6d-4fae-9b61-7684f7bc1c59
+		summarizeBy: sum
+		sourceColumn: pack
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: int64
+		formatString: 0
+		lineageTag: ae1be487-cd69-4d2c-aedd-9bc9a37fe736
+		summarizeBy: sum
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DmPacks = m
+		mode: import
+		source =
+				let
+				    Source = FactMain,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"pack", "item_number"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each [pack] <> null and [pack] <> ""),
+				    #"Removed Duplicates1" = Table.Distinct(#"Filtered Rows", {"item_number"}),
+				    #"Sorted Rows" = Table.Sort(#"Removed Duplicates1",{{"item_number", Order.Descending}})
+				in
+				    #"Sorted Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

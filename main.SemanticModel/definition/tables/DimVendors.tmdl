@@ -1,0 +1,36 @@
+table DimVendors
+	lineageTag: aed3be9f-e497-43f8-aac1-0d6b6cc75708
+
+	column vendor_number
+		dataType: int64
+		formatString: 0
+		lineageTag: e655330e-32d6-4bf6-8064-4dadd55fc812
+		summarizeBy: none
+		sourceColumn: vendor_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendor_name
+		dataType: string
+		lineageTag: 8b890d19-ae41-4220-8438-5245b7f00abd
+		summarizeBy: none
+		sourceColumn: vendor_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimVendors = m
+		mode: import
+		source =
+				let
+				    Source = FactMain,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"vendor_number", "vendor_name"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each [vendor_number] <> null and [vendor_number] <> ""),
+				    #"Removed Duplicates1" = Table.Distinct(#"Filtered Rows", {"vendor_number"})
+				in
+				    #"Removed Duplicates1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,100 @@
+// Welcome to DAX query view! Learn more about DAX queries at https://aka.ms/dax-queries.
+// Right-click on tables, columns, or measures in the data pane to access quick queries, or ask Copilot for help writing DAX.
+DEFINE
+    FUNCTION WeekStart = (_date : DATETIME) =>
+        _date - WEEKDAY(_date,2) + 1
+
+    FUNCTION MonthStart = (_date : DATETIME) =>
+        EOMONTH(_date,-1) + 1
+    
+    FUNCTION QuarterStart = (_date : DATETIME) =>
+        var _month = (3*INT((MONTH(_date)-1)/3))+1
+        RETURN
+        DATE(YEAR(_date), _month, 1)
+
+    FUNCTION YearStart = (_date : DATETIME) =>
+        DATE(YEAR(_date),1,1)
+
+    FUNCTION QuarterNumber = (_date : DATETIME) =>
+        (INT((MONTH(_date)-1)/3))+1
+    
+    FUNCTION MeasureDirection = (_sel : STRING) =>
+        CALCULATE(
+			FIRSTNONBLANK(_Metrics[Direction],1),
+			FILTER(_Metrics, _Metrics[Name]=_sel)
+		)
+	
+	FUNCTION GetMetricType = (_sel : STRING) =>
+        CALCULATE(
+			FIRSTNONBLANK(_Metrics[Format],1),
+			FILTER(_Metrics, _Metrics[Name]=_sel)
+		)		
+
+    FUNCTION FormatMeasure = (_sel : STRING) =>
+		VAR _type = GetMetricType(_sel)
+		VAR _number =
+			SWITCH(_sel,
+			"Bottles Sold", "###,###,###,###.00",
+			"Bottle Volume Sold", "###,###,###,###.00L",
+			"Sales", "$###,###,###,###.00",
+			"Cost of Goods Sold", "$###,###,###,###.00",
+			"Gross Profit", "$###,###,###,###.00",
+			"Gross Margin Pct", "0.00%"
+			)
+		RETURN
+			_number
+		
+    FUNCTION PercentToGoal = (_actual : NUMERIC, _goal : NUMERIC, _sel : STRING) =>
+        VAR _dir = MeasureDirection(_sel)
+		var _pos = DIVIDE(_actual, _goal, BLANK())
+		VAR _neg = 2-_pos
+        RETURN
+            SWITCH(TRUE(),
+            _dir = "Negative",_neg,
+            _dir = "Positive", _pos
+            )
+			
+	FUNCTION ShortenNumber = (_number : NUMERIC, _sel: STRING) =>
+		VAR _type = GetMetricType(_sel)
+		var _amount = 
+			SWITCH(TRUE(),
+			ABS(_number)>1000000000, FORMAT(_number/1000000000, "###,###,###,###.00") & "B",
+			ABS(_number)>1000000, FORMAT(_number/1000000, "###,###,###,###.00") & "M",
+			ABS(_number)>1000, FORMAT(_number/1000, "###,###,###,###.00") & "K",
+			_number
+			)
+		RETURN
+			if(_type="Percent", FORMAT(_number, "Percent"), _amount)
+			
+	FUNCTION DirectionColor = (_pct : NUMERIC) =>
+		SWITCH(TRUE(),
+		_pct >= 1, "#00802b",
+		_pct >=.95, "#b38600",
+		"#cc0000"
+		)
+
+	FUNCTION DeltaColor = (_pct : NUMERIC) =>
+		SWITCH(TRUE(),
+		_pct >= 0, "#00802b",
+		"#cc0000"
+		)
+
+	FUNCTION DirectionArrow = (_pct : NUMERIC, _sel : STRING) =>
+	VAR _dir = MeasureDirection(_sel)
+	RETURN
+	IF(_pct >= 1, UNICHAR(9650),UNICHAR(9660))
+		
+	FUNCTION DeltaArrow = (_pct : NUMERIC, _sel : STRING) =>
+	VAR _dir = MeasureDirection(_sel)
+	var _pos = SWITCH(TRUE(),
+		_pct > 0, UNICHAR(129157),
+		_pct < 0, UNICHAR(129158),
+		unichar(129154)
+		)
+	var _neg = SWITCH(TRUE(),
+		_pct > 0, UNICHAR(129157),
+		_pct < 0, UNICHAR(129158),
+		unichar(129154)
+		)
+    RETURN
+	if(_dir = "Positive", _pos, _neg)

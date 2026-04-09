@@ -1,0 +1,90 @@
+table '_Visual Calendar'
+	lineageTag: 6c5487de-f40d-46f1-a5b4-bb2eea15c139
+
+	column 'Visual Date'
+		formatString: m/d/yy
+		lineageTag: 88164258-f9e0-4e5e-92a2-63a935c432a7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Visual Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Interval
+		lineageTag: 50ed32a2-23f2-4d30-ae76-469444382cd5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Interval]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		formatString: 0
+		lineageTag: abbe37d2-2c79-400e-91b8-5fd24fa53b8e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	column _Calendar_Date
+		formatString: General Date
+		lineageTag: 7a1e9a13-0b85-4a76-8596-340b8714d332
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: _Calendar[Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_Visual Calendar' = calculated
+		mode: import
+		source =
+				
+				VAR _sel = SELECTEDVALUE(_Intervals[Interval])
+				VAR _max = [0001_Max Date]
+				var _min = SWITCH(_sel,
+				"Daily", _max-7,
+				"Weely", WeekStart(_max-42),
+				"Monthly", MonthStart(_max-180),
+				"Quarterly", QuarterStart(_max-540),
+				"Yearly", YearStart(_max-(6*360))
+				)
+				var _cal = FILTER(_Calendar, _Calendar[Date]>=_min && _Calendar[Date]<=_max)
+				RETURN
+				UNION(
+				    ADDCOLUMNS(
+				        SELECTCOLUMNS(_Calendar, _Calendar[Date]),
+				        "Visual Date", [Date],
+				        "Interval", "Daily",
+				        "Order", 1
+				    ),
+				    ADDCOLUMNS(
+				        SELECTCOLUMNS(_Calendar, _Calendar[Date]),
+				        "Visual Date", WeekStart([Date]),
+				        "Interval", "Weekly",
+				        "Order", 2
+				    ),
+				    ADDCOLUMNS(
+				        SELECTCOLUMNS(_Calendar, _Calendar[Date]),
+				        "Visual Date", MonthStart([Date]),
+				        "Interval", "Monthly",
+				        "Order", 3
+				    ),
+				    ADDCOLUMNS(
+				        SELECTCOLUMNS(_Calendar, _Calendar[Date]),
+				        "Visual Date", QuarterStart([Date]),
+				        "Interval", "Quarterly",
+				        "Order", 4
+				    ),
+				    ADDCOLUMNS(
+				        SELECTCOLUMNS(_Calendar, _Calendar[Date]),
+				        "Visual Date", YearStart([Date]),
+				        "Interval", "Yearly",
+				        "Order", 5
+				    )
+				)
+
+	annotation PBI_Id = 8f8b7ea3c7e840a7970b92371b8b3346
+

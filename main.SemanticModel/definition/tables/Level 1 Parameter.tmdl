@@ -1,0 +1,50 @@
+table 'Level 1 Parameter'
+	lineageTag: 23c6791c-ef5d-4961-90c8-7edaf6245eae
+
+	column 'Level 1 Parameter'
+		lineageTag: 347fd4e9-874b-4e4b-b754-ace5260072af
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Level 1 Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Level 1 Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 1 Parameter Fields'
+		isHidden
+		lineageTag: fb23686c-bae0-4aa9-88ae-4f478a3046a7
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Level 1 Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level 1 Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 637c3429-b2ac-4282-80a9-9eafb0d5c998
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Level 1 Parameter' = calculated
+		mode: import
+		source =
+				{
+				    ("item_description", NAMEOF('DimProducts'[item_description]), 0),
+				    ("store_name", NAMEOF('DimStores'[store_name]), 1),
+				    ("vendor_name", NAMEOF('DimVendors'[vendor_name]), 2),
+				    ("category_name", NAMEOF('DimCategory'[category_name]), 3)
+				}
+
+	annotation PBI_Id = b5560155c0e44b41b172aebc87cef568
+

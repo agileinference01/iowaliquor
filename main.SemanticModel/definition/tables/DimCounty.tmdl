@@ -1,0 +1,36 @@
+table DimCounty
+	lineageTag: d715ed71-f927-4088-8a03-36fc7e58551f
+
+	column county_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 160a4404-dd8a-4daa-9193-189a5d966f35
+		summarizeBy: none
+		sourceColumn: county_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column county
+		dataType: string
+		lineageTag: 8416a4c7-a713-4b93-ba60-f10f6c224b69
+		summarizeBy: none
+		sourceColumn: county
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCounty = m
+		mode: import
+		source =
+				let
+				    Source = FactMain,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"county_number", "county"}),
+				    #"Removed Duplicates1" = Table.Distinct(#"Removed Other Columns", {"county_number"}),
+				    #"Sorted Rows" = Table.Sort(#"Removed Duplicates1",{{"county_number", Order.Ascending}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Sorted Rows", each [county_number] <> null and [county_number] <> "")
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

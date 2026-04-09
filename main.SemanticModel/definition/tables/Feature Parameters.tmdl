@@ -1,0 +1,50 @@
+table 'Feature Parameters'
+	lineageTag: 46c4c9a5-b0ff-48e9-8495-f06366f69472
+
+	column 'Feature Parameters'
+		lineageTag: b8d936cd-a55a-4fde-80bf-59d9261cfbe4
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Feature Parameters Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Feature Parameters Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feature Parameters Fields'
+		isHidden
+		lineageTag: acc60979-9fdc-4283-895f-34f44f86374f
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Feature Parameters Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Feature Parameters Order'
+		isHidden
+		formatString: 0
+		lineageTag: 744af73e-e34a-4a9a-8350-afe1b7557a11
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Feature Parameters' = calculated
+		mode: import
+		source =
+				{
+				    ("category_name", NAMEOF('DimCategory'[category_name]), 0),
+				    ("county", NAMEOF('DimCounty'[county]), 1),
+				    ("item_description", NAMEOF('DimProducts'[item_description]), 2),
+				    ("store_name", NAMEOF('DimStores'[store_name]), 3)
+				}
+
+	annotation PBI_Id = 371ccbd1f5904f58b3cbaf2613e69241
+

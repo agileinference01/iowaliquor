@@ -1,0 +1,243 @@
+table FactMain
+	lineageTag: 543c0861-c394-4ddd-9090-bc08969f6353
+
+	column 'Source.Name'
+		dataType: string
+		lineageTag: ae0dcf3c-863b-4370-9b30-c2203426a3da
+		summarizeBy: none
+		sourceColumn: Source.Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_and_item_number
+		dataType: string
+		lineageTag: fc43097e-1d32-4573-b425-d04e2851b198
+		summarizeBy: none
+		sourceColumn: invoice_and_item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2a2bc80f-1355-497e-aaed-608ab1630db7
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column store_number
+		dataType: int64
+		formatString: 0
+		lineageTag: f0479b99-0953-4b35-8dba-fa0e8d27c3df
+		summarizeBy: none
+		sourceColumn: store_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_name
+		dataType: string
+		lineageTag: 9a5b1338-73a5-49e7-b7e2-ac1e536dba7b
+		summarizeBy: none
+		sourceColumn: store_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column address
+		dataType: string
+		lineageTag: 66d40f43-0c08-432d-9a38-92f415a69a91
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 64203070-33a0-4489-bb08-6df3085748a6
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column zip_code
+		dataType: int64
+		formatString: 0
+		lineageTag: 610b268a-020f-499e-b6b9-aa6b71088391
+		summarizeBy: sum
+		sourceColumn: zip_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_location
+		dataType: string
+		lineageTag: fa3ee45e-e524-44a7-953d-94f6d0283c24
+		summarizeBy: none
+		sourceColumn: store_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 96dcb08c-af14-44d2-bcaf-1a78cc5f232d
+		summarizeBy: none
+		sourceColumn: county_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column county
+		dataType: string
+		lineageTag: 9f7e5085-0a33-4b7f-8f2b-66a640cda15b
+		summarizeBy: none
+		sourceColumn: county
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: int64
+		formatString: 0
+		lineageTag: 564b9f64-a878-4719-9772-fa663bc8325e
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_name
+		dataType: string
+		lineageTag: 9bfe10b7-e3fc-48e8-a90a-830d5b4d1cfa
+		summarizeBy: none
+		sourceColumn: category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendor_number
+		dataType: int64
+		formatString: 0
+		lineageTag: d97b3ca1-d5eb-48c0-8151-abe9f0fd53ca
+		summarizeBy: none
+		sourceColumn: vendor_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column vendor_name
+		dataType: string
+		lineageTag: 5bb3706b-7756-4d24-8c82-e10cd9844dfa
+		summarizeBy: none
+		sourceColumn: vendor_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: int64
+		formatString: 0
+		lineageTag: cfa1383b-4b50-424a-9f78-92b9959e5074
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_description
+		dataType: string
+		lineageTag: 981ce0aa-8023-4579-ae5e-e60de7272bba
+		summarizeBy: none
+		sourceColumn: item_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column pack
+		dataType: int64
+		formatString: 0
+		lineageTag: 6378b457-ecbd-41f2-8c71-2fc3ca40efe7
+		summarizeBy: sum
+		sourceColumn: pack
+
+		annotation SummarizationSetBy = Automatic
+
+	column bottle_volume_ml
+		dataType: int64
+		formatString: 0
+		lineageTag: 7497aaca-7094-439e-a0fd-cf704fb618e7
+		summarizeBy: sum
+		sourceColumn: bottle_volume_ml
+
+		annotation SummarizationSetBy = Automatic
+
+	column state_bottle_cost
+		dataType: double
+		lineageTag: 52926d1f-8b8b-42cb-9b34-3f43b3b8d0cc
+		summarizeBy: sum
+		sourceColumn: state_bottle_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column state_bottle_retail
+		dataType: double
+		lineageTag: 20781ef5-2b78-4814-9611-d2c77a957fc7
+		summarizeBy: sum
+		sourceColumn: state_bottle_retail
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bottles_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: 60e93e5e-8610-4447-8977-cdc5f89581f8
+		summarizeBy: sum
+		sourceColumn: bottles_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	column sale_dollars
+		dataType: double
+		lineageTag: 998ca821-6224-43d2-ad43-2d89ff2b96c7
+		summarizeBy: sum
+		sourceColumn: sale_dollars
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume_sold_liters
+		dataType: double
+		lineageTag: 85e26318-197c-4277-bb0d-1490e3f87751
+		summarizeBy: sum
+		sourceColumn: volume_sold_liters
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column volume_sold_gallons
+		dataType: double
+		lineageTag: 63533293-7555-4449-8487-1301910c37a7
+		summarizeBy: sum
+		sourceColumn: volume_sold_gallons
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FactMain = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files("C:\Users\PHUyJo3\OneDrive - NESTLE\Documents\projects\data\iowa"),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"invoice_and_item_number", type text}, {"date", type date}, {"store_number", Int64.Type}, {"store_name", type text}, {"address", type text}, {"city", type text}, {"zip_code", Int64.Type}, {"store_location", type text}, {"county_number", Int64.Type}, {"county", type text}, {"category", Int64.Type}, {"category_name", type text}, {"vendor_number", Int64.Type}, {"vendor_name", type text}, {"item_number", Int64.Type}, {"item_description", type text}, {"pack", Int64.Type}, {"bottle_volume_ml", Int64.Type}, {"state_bottle_cost", type number}, {"state_bottle_retail", type number}, {"bottles_sold", Int64.Type}, {"sale_dollars", type number}, {"volume_sold_liters", type number}, {"volume_sold_gallons", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

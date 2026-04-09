@@ -1,0 +1,69 @@
+table DimStores
+	lineageTag: 4af4ed38-33f1-4071-99ee-f3806b56b0af
+
+	column store_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 75d4cef7-d038-4dd9-a3b3-5b4ff129be97
+		summarizeBy: none
+		sourceColumn: store_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_name
+		dataType: string
+		lineageTag: 97f742bd-28a4-4d09-9a0f-a8c89e0ef04c
+		summarizeBy: none
+		sourceColumn: store_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column address
+		dataType: string
+		lineageTag: 8cd13854-e139-4407-83ad-6b6bd9d2cdba
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: c8a57f43-92c0-46e9-88b9-6d9b761a625d
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column zip_code
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ef1cc60-8b65-4fce-a3c5-da3464ae3968
+		summarizeBy: sum
+		sourceColumn: zip_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column store_location
+		dataType: string
+		lineageTag: 7393ca3c-f432-40be-bcfa-ec6cdb616ec1
+		summarizeBy: none
+		sourceColumn: store_location
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimStores = m
+		mode: import
+		source =
+				let
+				    Source = FactMain,
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"store_number", "store_name", "address", "city", "zip_code", "store_location"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each [store_number] <> null and [store_number] <> ""),
+				    #"Removed Duplicates1" = Table.Distinct(#"Filtered Rows", {"store_number"})
+				in
+				    #"Removed Duplicates1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
