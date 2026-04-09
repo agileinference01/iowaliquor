@@ -4,7 +4,7 @@
   "position": {
     "x": 0,
     "y": 12.371323914181062,
-    "z": 4000,
+    "z": 1000,
     "height": 35.164835164835161,
     "width": 267,
     "tabOrder": 2000
@@ -94,7 +94,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Bottles Sold'"
+                                "Value": "'Cost of Goods Sold'"
                               }
                             }
                           ]

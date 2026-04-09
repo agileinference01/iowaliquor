@@ -109,8 +109,8 @@ function DeltaArrow =
 				unichar(129154)
 				)
 			var _neg = SWITCH(TRUE(),
-				_pct > 0, UNICHAR(129157),
-				_pct < 0, UNICHAR(129158),
+				_pct < 0, UNICHAR(129157),
+				_pct > 0, UNICHAR(129158),
 				unichar(129154)
 				)
 		    RETURN
@@ -118,10 +118,19 @@ function DeltaArrow =
 	lineageTag: 4f3bc247-4192-4867-a329-901c5178a949
 
 function DeltaColor =
-		(_pct : NUMERIC) =>
+		(_pct : NUMERIC, _sel : STRING) =>
+				VAR _dir = MeasureDirection(_sel)
+				VAR _pos =
 				SWITCH(TRUE(),
 				_pct >= 0, "#00802b",
 				"#cc0000"
 				)
+				VAR _neg =
+				SWITCH(TRUE(),
+				_pct >= 0, "#cc0000",
+				"#00802b"
+				)
+				RETURN
+				if(_dir = "Positive", _pos, _neg)
 	lineageTag: 0b3d6a43-0150-409b-b4e5-5082542a1de2
 

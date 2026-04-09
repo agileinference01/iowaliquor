@@ -15,9 +15,8 @@ table _Measures
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure '0102_Sales Amount' = sum(GoalMain[sale_dollars])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
 		lineageTag: 01452009-00c4-44df-8217-91f7812e017e
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure '0104_Cost of Goods Sold' = SUMX(GoalMain, GoalMain[state_bottle_cost]*GoalMain[bottles_sold])
 		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
@@ -346,14 +345,21 @@ table _Measures
 			```
 		lineageTag: dd51fdbf-21db-468a-959e-dae2e9fcc179
 
-	measure '0010_Selected Measure Delta Color' = DeltaColor([0214_Selected Measure Delta Pct PP])
+	measure '0010_Selected Measure Delta Color' =
+			
+			var _sel = SELECTEDVALUE(_Metrics[Name])
+			RETURN
+			DeltaColor([0214_Selected Measure Delta Pct PP], _sel)
 		lineageTag: 8dc9400f-ae9e-4094-b3d8-6617470e4d4c
 
 	measure '0011_Selected Measure Card Title Label' = SELECTEDVALUE(_Metrics[Name])
 		lineageTag: bd578f49-e354-4670-9769-1b8dbeac6df6
 
-	measure '0012_Actual Variance to Goal Color' = DirectionColor([0303_Selected Measure Pct to Goal])
+	measure '0012_Actual Variance to Goal Color' = DirectionColor([0211_Selected Measure Goal CP])
 		lineageTag: 32d50d7a-4b2b-46f3-87a5-075ec2eb4041
+
+	measure '0013_Selected Measure Name' = SELECTEDVALUE(_Metrics[Name])
+		lineageTag: a461f93d-d265-4ce7-a6c8-f57c3b2042f0
 
 	column Column1
 		dataType: string

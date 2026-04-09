@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dd47b6dd1e284f74e183",
   "position": {
-    "x": 830.63829787234044,
-    "y": 90.455927051671736,
-    "z": 14000,
-    "height": 268.44984802431611,
-    "width": 449.36170212765961,
-    "tabOrder": 13000
+    "x": 854.32789432789446,
+    "y": 90.505050505050519,
+    "z": 12000,
+    "height": 268.53146853146853,
+    "width": 425.67210567210572,
+    "tabOrder": 12000
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "TornadoChart1452517688218",
     "query": {
       "queryState": {
         "Category": {
@@ -20,16 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimCounty"
+                      "Entity": "DimCategory"
                     }
                   },
-                  "Property": "county"
+                  "Property": "category_name"
                 }
               },
-              "queryRef": "DimCounty.county",
-              "nativeQueryRef": "county",
-              "active": true,
-              "displayName": "county"
+              "queryRef": "DimCategory.category_name",
+              "nativeQueryRef": "category_name",
+              "displayName": "category_name"
             }
           ],
           "fieldParameters": [
@@ -49,7 +48,7 @@
             }
           ]
         },
-        "Y": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -59,12 +58,27 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "0100_Number of Bottles Sold"
+                  "Property": "0104_Cost of Goods Sold"
                 }
               },
-              "queryRef": "_Measures.0100_Number of Bottles Sold",
-              "nativeQueryRef": "Bottles Sold",
-              "displayName": "Bottles Sold"
+              "queryRef": "_Measures.0104_Cost of Goods Sold",
+              "nativeQueryRef": "COGS",
+              "displayName": "COGS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "0102_Sales Amount"
+                }
+              },
+              "queryRef": "_Measures.0102_Sales Amount",
+              "nativeQueryRef": "Sales",
+              "displayName": "Sales"
             }
           ]
         }
@@ -79,7 +93,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "0100_Number of Bottles Sold"
+                "Property": "0104_Cost of Goods Sold"
               }
             },
             "direction": "Descending"
@@ -91,8 +105,20 @@
     "objects": {
       "categoryAxis": [
         {
+          "properties": {}
+        }
+      ],
+      "labels": [
+        {
           "properties": {
-            "labelColor": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "outsideFill": {
               "solid": {
                 "color": {
                   "expr": {
@@ -107,31 +133,10 @@
           }
         }
       ],
-      "dataPoint": [
+      "categories": [
         {
           "properties": {
             "fill": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 7,
-                      "Percent": 0.2
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "_Measures.0100_Number of Bottles Sold"
-          }
-        }
-      ],
-      "labels": [
-        {
-          "properties": {
-            "color": {
               "solid": {
                 "color": {
                   "expr": {
@@ -143,10 +148,10 @@
                 }
               }
             },
-            "show": {
+            "position": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "'Left'"
                 }
               }
             }
@@ -269,28 +274,28 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "5D"
                 }
               }
             },
             "bottom": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "5D"
                 }
               }
             },
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "5D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "0D"
+                  "Value": "5D"
                 }
               }
             }
@@ -311,8 +316,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#666666'"
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.6
                     }
                   }
                 }

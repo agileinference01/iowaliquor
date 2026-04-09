@@ -1,30 +1,47 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "ca55036021532ba65c93",
+  "name": "75fb9af09ae7fd458480",
   "position": {
-    "x": 1228.8997078870495,
-    "y": 46.114897760467379,
-    "z": 14000,
-    "height": 35,
-    "width": 35,
-    "tabOrder": 16000
+    "x": 0,
+    "y": 30.289219982471518,
+    "z": 20000,
+    "height": 66.187554776511831,
+    "width": 30.289219982471518,
+    "tabOrder": 19000
   },
   "visual": {
-    "visualType": "actionButton",
+    "visualType": "shape",
     "objects": {
-      "icon": [
+      "shape": [
         {
           "properties": {
-            "shapeType": {
+            "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'reset'"
+                  "Value": "'tabCutCorner'"
+                }
+              }
+            },
+            "tabCutCornerSnipSizeTopRight": {
+              "expr": {
+                "Literal": {
+                  "Value": "100L"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
+          }
+        }
+      ],
+      "rotation": [
+        {
+          "properties": {
+            "shapeAngle": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
           }
         }
       ],
@@ -35,9 +52,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 9,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#3064FF'"
                     }
                   }
                 }
@@ -46,40 +62,19 @@
           },
           "selector": {
             "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "fillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#CC0000'"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "hover"
           }
         }
       ],
-      "shape": [
+      "outline": [
         {
           "properties": {
-            "tileShape": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'oval'"
+                  "Value": "false"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
           }
         }
       ]

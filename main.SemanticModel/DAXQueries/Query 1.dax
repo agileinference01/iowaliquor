@@ -73,11 +73,20 @@ DEFINE
 		"#cc0000"
 		)
 
-	FUNCTION DeltaColor = (_pct : NUMERIC) =>
+	FUNCTION DeltaColor = (_pct : NUMERIC, _sel : STRING) =>
+		VAR _dir = MeasureDirection(_sel)
+		VAR _pos =
 		SWITCH(TRUE(),
 		_pct >= 0, "#00802b",
 		"#cc0000"
 		)
+		VAR _neg =
+		SWITCH(TRUE(),
+		_pct >= 0, "#cc0000",
+		"#00802b"
+		)
+		RETURN
+		if(_dir = "Positive", _pos, _neg)
 
 	FUNCTION DirectionArrow = (_pct : NUMERIC, _sel : STRING) =>
 	VAR _dir = MeasureDirection(_sel)
@@ -92,8 +101,8 @@ DEFINE
 		unichar(129154)
 		)
 	var _neg = SWITCH(TRUE(),
-		_pct > 0, UNICHAR(129157),
-		_pct < 0, UNICHAR(129158),
+		_pct < 0, UNICHAR(129157),
+		_pct > 0, UNICHAR(129158),
 		unichar(129154)
 		)
     RETURN

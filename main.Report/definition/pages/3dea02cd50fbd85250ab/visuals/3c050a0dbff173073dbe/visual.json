@@ -4,7 +4,7 @@
   "position": {
     "x": 1068.1207400194742,
     "y": 26.173320350535541,
-    "z": 6000,
+    "z": 7000,
     "height": 64.810126582278485,
     "width": 160.77896786757546,
     "tabOrder": 4000
@@ -141,23 +141,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "5b85b462a4a9b9b0dd5a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Calendar"
-              }
-            },
-            "Property": "Date"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

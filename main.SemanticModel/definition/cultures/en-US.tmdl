@@ -4293,6 +4293,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.9
 			          }
+			        },
+			        {
+			          "Sales": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -5851,7 +5861,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__measure.entity_0006_Variance_tp_goal_color_CP": {
+			    "entity__measure.entity_0006_Variance_to_goal_color_CP": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
@@ -5861,7 +5871,7 @@ cultureInfo en-US
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "0006_Variance tp goal color CP": {
+			          "0006_Variance to goal color CP": {
 			            "State": "Generated"
 			          }
 			        }
@@ -7323,7 +7333,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "dim_category.entity_0011_Selected_measure_card_title_label": {
+			    "entity__measure.entity_0011_Selected_measure_card_title_label": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
@@ -13897,9 +13907,217 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.entity_0012_Actual_variance_to_goal_color": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "0012_Actual Variance to Goal Color"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "0012_Actual variance to goal color": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "0012_actual alteration to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "0012_actual modification to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "0012_actual adjustment to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "0012_actual change to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "0012_actual discrepancy to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.494
+			          }
+			        },
+			        {
+			          "0012_actual inconsistency to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.494
+			          }
+			        },
+			        {
+			          "0012_actual disagreement to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.494
+			          }
+			        },
+			        {
+			          "0012_actual variation to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.494
+			          }
+			        },
+			        {
+			          "0012_actual divergence to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.494
+			          }
+			        },
+			        {
+			          "0012_actual disparity to goal color": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.494
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "level_3_parameter_has_level_3_parameter": {
+			      "Binding": {
+			        "ConceptualEntity": "Level 3 Parameter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "level_3_parameter": {
+			          "Target": {
+			            "Entity": "level_3_parameter"
+			          }
+			        },
+			        "level_3_parameter.level_3_parameter": {
+			          "Target": {
+			            "Entity": "level_3_parameter.level_3_parameter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "level_3_parameter"
+			            },
+			            "Object": {
+			              "Role": "level_3_parameter.level_3_parameter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "level_3_parameters_have_level_3_parameters"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "level_3_parameter"
+			            },
+			            "Name": {
+			              "Role": "level_3_parameter.level_3_parameter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "level_3_parameters_are_names_IDs_of_level_3_parameters"
+			        }
+			      ]
+			    },
+			    "level_2_parameter_has_level_2_parameter": {
+			      "Binding": {
+			        "ConceptualEntity": "Level 2 Parameter"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "level_2_parameter": {
+			          "Target": {
+			            "Entity": "level_2_parameter"
+			          }
+			        },
+			        "level_2_parameter.level_2_parameter": {
+			          "Target": {
+			            "Entity": "level_2_parameter.level_2_parameter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "level_2_parameter"
+			            },
+			            "Object": {
+			              "Role": "level_2_parameter.level_2_parameter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "level_2_parameters_have_level_2_parameters"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "level_2_parameter"
+			            },
+			            "Name": {
+			              "Role": "level_2_parameter.level_2_parameter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "level_2_parameters_are_names_IDs_of_level_2_parameters"
+			        }
+			      ]
+			    },
 			    "level_1_parameter_has_level_1_parameter": {
 			      "Binding": {
 			        "ConceptualEntity": "Level 1 Parameter"
@@ -15312,7 +15530,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__metrics_has_dim_category_entity_0011_Selected_measure_card_title_label": {
+			    "entity__metrics_has_entity__measure_entity_0011_Selected_measure_card_title_label": {
 			      "Binding": {
 			        "ConceptualEntity": "_Metrics"
 			      },
@@ -15323,9 +15541,9 @@ cultureInfo en-US
 			            "Entity": "entity__metrics"
 			          }
 			        },
-			        "dim_category.entity_0011_Selected_measure_card_title_label": {
+			        "entity__measure.entity_0011_Selected_measure_card_title_label": {
 			          "Target": {
-			            "Entity": "dim_category.entity_0011_Selected_measure_card_title_label"
+			            "Entity": "entity__measure.entity_0011_Selected_measure_card_title_label"
 			          }
 			        }
 			      },
@@ -15336,7 +15554,7 @@ cultureInfo en-US
 			              "Role": "entity__metrics"
 			            },
 			            "Object": {
-			              "Role": "dim_category.entity_0011_Selected_measure_card_title_label"
+			              "Role": "entity__measure.entity_0011_Selected_measure_card_title_label"
 			            }
 			          },
 			          "State": "Generated",
@@ -16031,7 +16249,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__metrics_has_entity__measure_entity_0006_Variance_tp_goal_color_CP": {
+			    "entity__metrics_has_entity__measure_entity_0006_Variance_to_goal_color_CP": {
 			      "Binding": {
 			        "ConceptualEntity": "_Metrics"
 			      },
@@ -16042,9 +16260,9 @@ cultureInfo en-US
 			            "Entity": "entity__metrics"
 			          }
 			        },
-			        "entity__measure.entity_0006_Variance_tp_goal_color_CP": {
+			        "entity__measure.entity_0006_Variance_to_goal_color_CP": {
 			          "Target": {
-			            "Entity": "entity__measure.entity_0006_Variance_tp_goal_color_CP"
+			            "Entity": "entity__measure.entity_0006_Variance_to_goal_color_CP"
 			          }
 			        }
 			      },
@@ -16055,16 +16273,16 @@ cultureInfo en-US
 			              "Role": "entity__metrics"
 			            },
 			            "Object": {
-			              "Role": "entity__measure.entity_0006_Variance_tp_goal_color_CP"
+			              "Role": "entity__measure.entity_0006_Variance_to_goal_color_CP"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "Phrasing_metrics_have_0006_Variance_tp_goal_color_CP"
+			          "ID": "Phrasing_metrics_have_0006_Variance_to_goal_color_CP"
 			        }
 			      ]
 			    },
-			    "goal_main_has_entity__measure_entity_0006_Variance_tp_goal_color_CP": {
+			    "goal_main_has_entity__measure_entity_0006_Variance_to_goal_color_CP": {
 			      "Binding": {
 			        "ConceptualEntity": "GoalMain"
 			      },
@@ -16075,9 +16293,9 @@ cultureInfo en-US
 			            "Entity": "goal_main"
 			          }
 			        },
-			        "entity__measure.entity_0006_Variance_tp_goal_color_CP": {
+			        "entity__measure.entity_0006_Variance_to_goal_color_CP": {
 			          "Target": {
-			            "Entity": "entity__measure.entity_0006_Variance_tp_goal_color_CP"
+			            "Entity": "entity__measure.entity_0006_Variance_to_goal_color_CP"
 			          }
 			        }
 			      },
@@ -16088,12 +16306,12 @@ cultureInfo en-US
 			              "Role": "goal_main"
 			            },
 			            "Object": {
-			              "Role": "entity__measure.entity_0006_Variance_tp_goal_color_CP"
+			              "Role": "entity__measure.entity_0006_Variance_to_goal_color_CP"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "goal_mains_have_0006_Variance_tp_goal_color_CP"
+			          "ID": "goal_mains_have_0006_Variance_to_goal_color_CP"
 			        }
 			      ]
 			    },
@@ -19633,95 +19851,69 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "level_3_parameter_is_named_level_3_parameter": {
+			    "goal_main_has_entity__measure_entity_0012_Actual_variance_to_goal_color": {
 			      "Binding": {
-			        "ConceptualEntity": "Level 3 Parameter"
+			        "ConceptualEntity": "GoalMain"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "level_3_parameter": {
+			        "goal_main": {
 			          "Target": {
-			            "Entity": "level_3_parameter"
+			            "Entity": "goal_main"
 			          }
 			        },
-			        "level_3_parameter.level_3_parameter": {
+			        "entity__measure.entity_0012_Actual_variance_to_goal_color": {
 			          "Target": {
-			            "Entity": "level_3_parameter.level_3_parameter"
+			            "Entity": "entity__measure.entity_0012_Actual_variance_to_goal_color"
 			          }
 			        }
 			      },
 			      "Phrasings": [
 			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "level_3_parameter"
-			            },
-			            "Name": {
-			              "Role": "level_3_parameter.level_3_parameter"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "level_3_parameters_are_names_IDs_of_level_3_parameters"
-			        },
-			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "level_3_parameter"
+			              "Role": "goal_main"
 			            },
 			            "Object": {
-			              "Role": "level_3_parameter.level_3_parameter"
+			              "Role": "entity__measure.entity_0012_Actual_variance_to_goal_color"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "level_3_parameters_have_level_3_parameters"
+			          "ID": "goal_mains_have_0012_Actual_variance_to_goal_color"
 			        }
 			      ]
 			    },
-			    "level_2_parameter_is_named_level_2_parameter": {
+			    "entity__metrics_has_entity__measure_entity_0012_Actual_variance_to_goal_color": {
 			      "Binding": {
-			        "ConceptualEntity": "Level 2 Parameter"
+			        "ConceptualEntity": "_Metrics"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "level_2_parameter": {
+			        "entity__metrics": {
 			          "Target": {
-			            "Entity": "level_2_parameter"
+			            "Entity": "entity__metrics"
 			          }
 			        },
-			        "level_2_parameter.level_2_parameter": {
+			        "entity__measure.entity_0012_Actual_variance_to_goal_color": {
 			          "Target": {
-			            "Entity": "level_2_parameter.level_2_parameter"
+			            "Entity": "entity__measure.entity_0012_Actual_variance_to_goal_color"
 			          }
 			        }
 			      },
 			      "Phrasings": [
 			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "level_2_parameter"
-			            },
-			            "Name": {
-			              "Role": "level_2_parameter.level_2_parameter"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "level_2_parameters_are_names_IDs_of_level_2_parameters"
-			        },
-			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "level_2_parameter"
+			              "Role": "entity__metrics"
 			            },
 			            "Object": {
-			              "Role": "level_2_parameter.level_2_parameter"
+			              "Role": "entity__measure.entity_0012_Actual_variance_to_goal_color"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "level_2_parameters_have_level_2_parameters"
+			          "ID": "Phrasing_metrics_have_0012_Actual_variance_to_goal_color"
 			        }
 			      ]
 			    },

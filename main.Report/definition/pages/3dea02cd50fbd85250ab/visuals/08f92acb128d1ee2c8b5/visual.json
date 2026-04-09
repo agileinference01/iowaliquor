@@ -4,7 +4,7 @@
   "position": {
     "x": 0,
     "y": 130.73028776364103,
-    "z": 10000,
+    "z": 3000,
     "height": 132.82008368200837,
     "width": 266.71129707112971,
     "tabOrder": 0
@@ -496,34 +496,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "86e0df43ea05dc25d792",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "0111_Selected Measure Actual CP"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c9b5312e33c48d1e4995",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "0211_Selected Measure Goal CP"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

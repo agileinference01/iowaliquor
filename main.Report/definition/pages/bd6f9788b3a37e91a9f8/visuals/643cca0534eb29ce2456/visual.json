@@ -1,38 +1,38 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "1d13ea213b41e6f78696",
+  "name": "643cca0534eb29ce2456",
   "position": {
-    "x": 9.42643391521197,
+    "x": 10,
     "y": 0,
     "z": 0,
-    "height": 575.01246882793021,
-    "width": 1228.1296758104738,
+    "height": 240,
+    "width": 310,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "pivotTable",
+    "visualType": "lineChart",
     "query": {
       "queryState": {
-        "Rows": {
+        "Category": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "_Calendar"
+                      "Entity": "_Visual Calendar"
                     }
                   },
-                  "Property": "Date"
+                  "Property": "Visual Date"
                 }
               },
-              "queryRef": "_Calendar.Date",
-              "nativeQueryRef": "Date",
+              "queryRef": "_Visual Calendar.Visual Date",
+              "nativeQueryRef": "Visual Date",
               "active": true
             }
           ]
         },
-        "Values": {
+        "Y": {
           "projections": [
             {
               "field": {
@@ -42,25 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "0102_Sales Amount"
+                  "Property": "0111_Selected Measure Actual CP"
                 }
               },
-              "queryRef": "_Measures.0102_Sales Amount",
-              "nativeQueryRef": "0102_Sales Amount"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "0107_Selected Measure Actual"
-                }
-              },
-              "queryRef": "_Measures.0107_Selected Measure Actual",
-              "nativeQueryRef": "0107_Selected Measure Actual"
+              "queryRef": "_Measures.0111_Selected Measure Actual CP",
+              "nativeQueryRef": "0111_Selected Measure Actual CP"
             }
           ]
         }
@@ -72,16 +58,39 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "_Calendar"
+                    "Entity": "_Visual Calendar"
                   }
                 },
-                "Property": "Date"
+                "Property": "Visual Date"
               }
             },
             "direction": "Ascending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

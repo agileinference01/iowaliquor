@@ -1,184 +1,77 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "129a5712bd291ba3435a",
+  "name": "1c91e092357e3f0cee02",
   "position": {
-    "x": 34.809634809634815,
-    "y": 452.46996023425834,
-    "z": 3000,
-    "height": 67.660311958405543,
-    "width": 143.05624159090345,
-    "tabOrder": 2000
+    "x": 0,
+    "y": 91.4996114996115,
+    "z": 16000,
+    "height": 628.56254856254861,
+    "width": 30,
+    "tabOrder": 14000
   },
   "visual": {
-    "visualType": "slicer",
-    "query": {
-      "queryState": {
-        "Values": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Level 2 Parameter"
-                    }
-                  },
-                  "Property": "Level 2 Parameter"
-                }
-              },
-              "queryRef": "Level 2 Parameter.Level 2 Parameter",
-              "nativeQueryRef": "Level 2",
-              "active": true,
-              "displayName": "Level 2"
-            }
-          ]
-        }
-      }
-    },
+    "visualType": "shape",
     "objects": {
-      "data": [
+      "shape": [
         {
           "properties": {
-            "mode": {
+            "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dropdown'"
+                  "Value": "'rectangle'"
                 }
               }
             }
           }
         }
       ],
-      "selection": [
+      "rotation": [
         {
           "properties": {
-            "strictSingleSelect": {
+            "shapeAngle": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "0L"
                 }
               }
             }
           }
         }
       ],
-      "general": [
+      "fill": [
         {
           "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "l",
-                    "Entity": "Level 2 Parameter",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "l"
-                                }
-                              },
-                              "Property": "Level 2 Parameter Fields"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''DimCategory''[category_name]'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    },
-                    "Annotations": {
-                      "filterExpressionMetadata": {
-                        "expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "Level 2 Parameter"
-                                }
-                              },
-                              "Property": "Level 2 Parameter"
-                            }
-                          }
-                        ],
-                        "decomposedIdentities": {
-                          "values": [
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''DimCategory''[category_name]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ]
-                          ],
-                          "columns": [
-                            {
-                              "value": {
-                                "Column": {
-                                  "Expression": {
-                                    "SourceRef": {
-                                      "Entity": "Level 2 Parameter"
-                                    }
-                                  },
-                                  "Property": "Level 2 Parameter Fields"
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        "valueMap": [
-                          {
-                            "0": "category_name"
-                          }
-                        ]
-                      }
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#3064FF'"
                     }
                   }
-                ]
+                }
               }
-            }
-          }
-        }
-      ],
-      "header": [
-        {
-          "properties": {
-            "textSize": {
+            },
+            "transparency": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "0D"
                 }
               }
             }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ],
-      "items": [
+      "outline": [
         {
           "properties": {
-            "textSize": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "false"
                 }
               }
             }
@@ -443,5 +336,6 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  }
+  },
+  "howCreated": "InsertVisualButton"
 }

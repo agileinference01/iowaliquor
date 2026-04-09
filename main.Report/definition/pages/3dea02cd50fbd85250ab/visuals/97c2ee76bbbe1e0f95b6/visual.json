@@ -4,10 +4,10 @@
   "position": {
     "x": 1116.8211920529802,
     "y": 96.423841059602651,
-    "z": 15000,
+    "z": 13000,
     "height": 49.801324503311257,
     "width": 163.17880794701986,
-    "tabOrder": 14000
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "slicer",
@@ -88,7 +88,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''DimCounty''[county]'"
+                                "Value": "'''DimCategory''[category_name]'"
                               }
                             }
                           ]
@@ -116,7 +116,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''DimCounty''[county]'"
+                                      "Value": "'''DimCategory''[category_name]'"
                                     }
                                   }
                                 ]
@@ -140,7 +140,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "county"
+                            "0": "category_name"
                           }
                         ]
                       }
