@@ -11,13 +11,13 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Temperature",
+      "name": "Custom_Power_BI_Color_Palette45595247847016374.json",
       "reportVersionAtImport": {
         "visual": "2.7.0",
         "report": "3.2.0",
         "page": "2.3.1"
       },
-      "type": "SharedResources"
+      "type": "RegisteredResources"
     }
   },
   "objects": {
@@ -61,11 +61,6 @@
           "name": "Fluent2-CY26SU03",
           "path": "BaseThemes/Fluent2-CY26SU03.json",
           "type": "BaseTheme"
-        },
-        {
-          "name": "Temperature",
-          "path": "BuiltInThemes/Temperature.json",
-          "type": "CustomTheme"
         }
       ]
     },
@@ -73,6 +68,11 @@
       "name": "RegisteredResources",
       "type": "RegisteredResources",
       "items": [
+        {
+          "name": "Custom_Power_BI_Color_Palette45595247847016374.json",
+          "path": "Custom_Power_BI_Color_Palette45595247847016374.json",
+          "type": "CustomTheme"
+        },
         {
           "name": "g620876396524287033.png",
           "path": "g620876396524287033.png",
