@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "46c06c1d77c8657c30c0",
   "position": {
-    "x": 174.16458852867831,
-    "y": 379.7506234413965,
+    "x": 173.6740088105727,
+    "y": 405.99118942731275,
     "z": 0,
-    "height": 333.96508728179549,
-    "width": 893.26683291770576,
+    "height": 307.87665198237886,
+    "width": 894.30837004405282,
     "tabOrder": 0
   },
   "visual": {
@@ -830,7 +830,15 @@
     "visualContainerObjects": {
       "border": [
         {
-          "properties": {}
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
       ],
       "padding": [
@@ -924,135 +932,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "84e5f1eed8d374940401",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimProducts"
-              }
-            },
-            "Property": "item_description"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "ffa2e62ffde1dfb591dc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "0100_Number of Bottles Sold"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "83378b85462c1a87eb78",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "0101_Bottle Volume Sold"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ed1bfddbe7114d230832",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "0102_Sales Amount"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ff7da540982f9e56cb6c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "0104_Cost of Goods Sold"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ddd02d103752f31d41ff",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "0105_Gross Profit"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "ccfc71967b7f81db863f",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "0106_Gross Margin Pct"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d1b2c5dbaa357c745f47",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimVendors"
-              }
-            },
-            "Property": "vendor_name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "47ac5afeec502304f272",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "DimCategory"
-              }
-            },
-            "Property": "category_name"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

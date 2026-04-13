@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "97c2ee76bbbe1e0f95b6",
   "position": {
-    "x": 1116.8211920529802,
-    "y": 96.423841059602651,
-    "z": 13000,
-    "height": 49.801324503311257,
-    "width": 163.17880794701986,
-    "tabOrder": 13000
+    "x": 1100.6483790523691,
+    "y": 104.13965087281795,
+    "z": 16000,
+    "height": 36.807980049875312,
+    "width": 163.39152119700748,
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "slicer",
@@ -177,6 +177,19 @@
             }
           }
         }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -194,6 +207,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'Contributors Ranking'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

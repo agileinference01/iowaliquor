@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "a92f28b7c159dcd1ee86",
+  "name": "c928fe65a4b72641e956",
   "position": {
-    "x": 0,
+    "x": 0.5638766519824685,
     "y": 0,
-    "z": 4000,
-    "height": 60.898678414096914,
-    "width": 1280,
-    "tabOrder": 7000
+    "z": 27000,
+    "height": 268.40528634361232,
+    "width": 267.27753303964755,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "shape",
@@ -18,7 +18,14 @@
             "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'rectangle'"
+                  "Value": "'rectangleRounded'"
+                }
+              }
+            },
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "5L"
                 }
               }
             }
@@ -38,7 +45,7 @@
           }
         }
       ],
-      "outline": [
+      "fill": [
         {
           "properties": {
             "show": {
@@ -50,37 +57,10 @@
             }
           }
         }
-      ],
-      "fill": [
-        {
-          "properties": {
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
-            },
-            "fillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 4,
-                      "Percent": -0.25
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
       ]
     },
     "drillFilterOtherVisuals": true
   },
+  "parentGroupName": "2cdabc27d021d20584bd",
   "howCreated": "InsertVisualButton"
 }

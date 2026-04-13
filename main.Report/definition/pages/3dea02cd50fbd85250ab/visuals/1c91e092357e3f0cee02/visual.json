@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 91.4996114996115,
-    "z": 16000,
+    "z": 18000,
     "height": 628.56254856254861,
     "width": 30,
-    "tabOrder": 14000
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "shape",
@@ -45,8 +45,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#3064FF'"
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": -0.25
                     }
                   }
                 }
