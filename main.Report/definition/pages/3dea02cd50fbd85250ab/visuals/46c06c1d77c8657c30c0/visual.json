@@ -4,7 +4,7 @@
   "position": {
     "x": 173.6740088105727,
     "y": 405.99118942731275,
-    "z": 0,
+    "z": 1000,
     "height": 307.87665198237886,
     "width": 894.30837004405282,
     "tabOrder": 0
@@ -20,22 +20,6 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimVendors"
-                    }
-                  },
-                  "Property": "vendor_name"
-                }
-              },
-              "queryRef": "DimVendors.vendor_name",
-              "nativeQueryRef": "vendor_name",
-              "active": true,
-              "displayName": "vendor_name"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
                       "Entity": "DimCategory"
                     }
                   },
@@ -44,8 +28,24 @@
               },
               "queryRef": "DimCategory.category_name",
               "nativeQueryRef": "category_name",
-              "active": false,
+              "active": true,
               "displayName": "category_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimStores"
+                    }
+                  },
+                  "Property": "store_name"
+                }
+              },
+              "queryRef": "DimStores.store_name",
+              "nativeQueryRef": "store_name",
+              "active": false,
+              "displayName": "store_name"
             },
             {
               "field": {
@@ -215,10 +215,10 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "DimVendors"
+                    "Entity": "DimCategory"
                   }
                 },
-                "Property": "vendor_name"
+                "Property": "category_name"
               }
             },
             "direction": "Ascending"
@@ -232,25 +232,6 @@
           "Rows"
         ],
         "levels": [
-          {
-            "queryRefs": [
-              "DimVendors.vendor_name"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "DimVendors"
-                    }
-                  },
-                  "Property": "vendor_name"
-                }
-              }
-            ],
-            "isPinned": true
-          },
           {
             "queryRefs": [
               "DimCategory.category_name"
@@ -272,10 +253,16 @@
           },
           {
             "queryRefs": [
-              "DimProducts.item_description"
+              "DimStores.store_name"
             ],
             "isCollapsed": true,
             "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "DimProducts.item_description"
+            ],
+            "isCollapsed": true
           }
         ],
         "root": {}

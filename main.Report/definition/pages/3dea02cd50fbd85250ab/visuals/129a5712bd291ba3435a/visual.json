@@ -4,7 +4,7 @@
   "position": {
     "x": 35.012468827930171,
     "y": 473.11720698254362,
-    "z": 5000,
+    "z": 6000,
     "height": 67.331670822942641,
     "width": 142.7431421446384,
     "tabOrder": 6000
@@ -95,7 +95,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''DimCategory''[category_name]'"
+                                "Value": "'''DimStores''[store_name]'"
                               }
                             }
                           ]
@@ -123,7 +123,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''DimCategory''[category_name]'"
+                                      "Value": "'''DimStores''[store_name]'"
                                     }
                                   }
                                 ]
@@ -147,7 +147,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "category_name"
+                            "0": "store_name"
                           }
                         ]
                       }

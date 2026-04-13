@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "1b242f741b7034a4da87",
+  "name": "ec81d760111e4acccdc7",
   "position": {
-    "x": 0,
+    "x": 30.452801227935531,
     "y": 0,
-    "z": 7000,
-    "height": 60.198019801980195,
-    "width": 182.70627062706271,
-    "tabOrder": 12000
+    "z": 25000,
+    "height": 63.852647735993855,
+    "width": 260.32233307751341,
+    "tabOrder": 24000
   },
   "visual": {
     "visualType": "shape",
@@ -18,14 +18,14 @@
             "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'arrowPentagon'"
+                  "Value": "'tabCutCorner'"
                 }
               }
             },
-            "arrowheadSize": {
+            "tabCutCornerSnipSizeTopRight": {
               "expr": {
                 "Literal": {
-                  "Value": "70L"
+                  "Value": "100L"
                 }
               }
             }
@@ -59,13 +59,6 @@
                   }
                 }
               }
-            },
-            "transparency": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
             }
           },
           "selector": {
@@ -76,28 +69,13 @@
       "outline": [
         {
           "properties": {
-            "lineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "weight": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
+                  "Value": "false"
                 }
               }
             }
-          },
-          "selector": {
-            "id": "default"
           }
         }
       ]

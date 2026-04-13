@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "4c99ec407afe704c1648",
+  "name": "7882074d0d6581ca00e9",
   "position": {
-    "x": 931.52422907488983,
-    "y": 25.938325991189426,
-    "z": 7000,
-    "height": 36.08810572687225,
-    "width": 348.47577092511011,
-    "tabOrder": 11000
+    "x": 0,
+    "y": 0,
+    "z": 2000,
+    "height": 60.905602455871062,
+    "width": 225.94013814274749,
+    "tabOrder": 23000
   },
   "visual": {
     "visualType": "shape",
@@ -18,14 +18,7 @@
             "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'tabCutCorner'"
-                }
-              }
-            },
-            "tabCutCornerSnipSizeTopRight": {
-              "expr": {
-                "Literal": {
-                  "Value": "100L"
+                  "Value": "'rectangle'"
                 }
               }
             }
@@ -41,11 +34,17 @@
                   "Value": "0L"
                 }
               }
-            },
-            "angle": {
+            }
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "270D"
+                  "Value": "false"
                 }
               }
             }
@@ -56,27 +55,6 @@
         {
           "properties": {
             "fillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "outline": [
-        {
-          "properties": {
-            "lineColor": {
               "solid": {
                 "color": {
                   "expr": {

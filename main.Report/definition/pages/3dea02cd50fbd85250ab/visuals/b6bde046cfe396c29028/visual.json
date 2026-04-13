@@ -4,7 +4,7 @@
   "position": {
     "x": 35.012468827930171,
     "y": 405.785536159601,
-    "z": 2000,
+    "z": 4000,
     "height": 67.331670822942641,
     "width": 142.7431421446384,
     "tabOrder": 2000
@@ -95,7 +95,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''DimVendors''[vendor_name]'"
+                                "Value": "'''DimCategory''[category_name]'"
                               }
                             }
                           ]
@@ -123,7 +123,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''DimVendors''[vendor_name]'"
+                                      "Value": "'''DimCategory''[category_name]'"
                                     }
                                   }
                                 ]
@@ -147,7 +147,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "vendor_name"
+                            "0": "category_name"
                           }
                         ]
                       }
