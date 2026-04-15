@@ -3,10 +3,10 @@
   "name": "3c050a0dbff173073dbe",
   "position": {
     "x": 0,
-    "y": 73.676132003069839,
+    "y": 92.468827930174555,
     "z": 10000,
-    "height": 65.817344589409046,
-    "width": 136.54643131235608,
+    "height": 59.251870324189525,
+    "width": 136.45885286783042,
     "tabOrder": 9000
   },
   "visual": {
@@ -46,10 +46,9 @@
                 "Property": "Date"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {

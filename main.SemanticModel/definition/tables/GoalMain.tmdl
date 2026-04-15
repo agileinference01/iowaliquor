@@ -268,7 +268,7 @@ table GoalMain
 				    Source = FactMain,
 				    #"Duplicated Column" = Table.DuplicateColumn(Source, "bottles_sold", "bottles_sold - Copy"),
 				    #"Removed Columns" = Table.RemoveColumns(#"Duplicated Column",{"bottles_sold - Copy"}),
-				    #"Added Custom" = Table.AddColumn(#"Removed Columns", "bottles_sold_goal", each [bottles_sold] * (Number.RandomBetween(80,110)/100)),
+				    #"Added Custom" = Table.AddColumn(#"Removed Columns", "bottles_sold_goal", each [bottles_sold] * (Number.RandomBetween(70,120)/100)),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"bottles_sold_goal", Int64.Type}}),
 				    #"Added Custom1" = Table.AddColumn(#"Changed Type", "sale_dollars_goal", each [bottles_sold_goal]*[state_bottle_retail]),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"sale_dollars_goal", type number}}),

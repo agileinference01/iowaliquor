@@ -2,7 +2,7 @@ table _Calendar
 	lineageTag: 5219ee4d-85c4-4baf-a30f-a189df2daf1c
 
 	column Date
-		formatString: General Date
+		formatString: Short Date
 		lineageTag: acd16ebb-f0a6-4c30-9089-3652c073cba0
 		summarizeBy: none
 		isNameInferred
