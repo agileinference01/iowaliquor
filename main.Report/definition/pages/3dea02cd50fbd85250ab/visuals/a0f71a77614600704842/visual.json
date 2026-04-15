@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "0bd92827375031d74009",
+  "name": "a0f71a77614600704842",
   "position": {
-    "x": 1.1277533039647096,
+    "x": 0.0025965156652576482,
     "y": 5.63876651982379,
     "z": 29000,
     "height": 34.960352422907491,
-    "width": 266.14977973568284,
+    "width": 250,
     "tabOrder": 3000
   },
   "visual": {
@@ -94,7 +94,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Cost of Goods Sold'"
+                                "Value": "'Gross Margin Pct'"
                               }
                             }
                           ]
@@ -179,5 +179,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "daed5ebf87b495777ea2"
+  "parentGroupName": "fde9c5bd37203842d6b5"
 }

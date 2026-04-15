@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "ce1c666fd5b646ac1b91",
+  "name": "5a52a806ab3e37460376",
   "position": {
-    "x": 0.5638766519824685,
+    "x": 0.0025965156653073862,
     "y": 0,
-    "z": 27000,
-    "height": 268.40528634361232,
-    "width": 267.27753303964755,
+    "z": 28500,
+    "height": 250,
+    "width": 250,
     "tabOrder": 2000
   },
   "visual": {
@@ -18,7 +18,7 @@
             "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'rectangleRounded'"
+                  "Value": "'rectangle'"
                 }
               }
             },
@@ -57,10 +57,54 @@
             }
           }
         }
+      ],
+      "shadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "weight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "daed5ebf87b495777ea2",
+  "parentGroupName": "fde9c5bd37203842d6b5",
   "howCreated": "InsertVisualButton"
 }

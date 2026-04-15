@@ -282,7 +282,7 @@ table _Measures
 			
 			var _sel = SELECTEDVALUE(_Metrics[Name])
 			RETURN
-			ShortenNumber([0301_Selected Measure Variance to Goal CP], _sel) & " " & DirectionArrow([0303_Selected Measure Pct to Goal CP], _sel) & " " & ShortenNumber([0211_Selected Measure Goal CP], _sel) & UNICHAR(10) & FORMAT([0303_Selected Measure Pct to Goal CP], "Percent") & " to goal"
+			ShortenNumber([0301_Selected Measure Variance to Goal CP], _sel) & " " & DirectionArrow([0303_Selected Measure Pct to Goal CP], _sel) & " " & ShortenNumber([0211_Selected Measure Goal CP], _sel) & UNICHAR(13) & UNICHAR(10) & FORMAT([0303_Selected Measure Pct to Goal CP], "Percent") & " to goal"
 		lineageTag: 434295e2-4855-4697-80ca-4f0a83c1d1b4
 
 	measure '0006_Variance to Goal Color CP' = DirectionColor([0303_Selected Measure Pct to Goal CP])
@@ -360,6 +360,22 @@ table _Measures
 
 	measure '0013_Selected Measure Name' = SELECTEDVALUE(_Metrics[Name])
 		lineageTag: a461f93d-d265-4ce7-a6c8-f57c3b2042f0
+
+	measure 0014_Username =
+			
+			VAR AtPosition = SEARCH("@", USERPRINCIPALNAME(), 1, BLANK())  -- Find position of @
+			RETURN
+			IF(
+			    NOT ISBLANK(AtPosition),
+			    LEFT(USERPRINCIPALNAME(), AtPosition - 1),  -- Extract everything before @
+			    BLANK()  -- Return blank if @ not found
+			)
+		lineageTag: 2f1236f0-b1b8-4417-b4ed-3282bbda0fd0
+
+	measure '0015_Last Refresh' =
+			
+			"Updated: "& FORMAT(AVERAGE(GoalMain[RefreshDate]), "mm/dd/yyyy h:m AMPM")
+		lineageTag: 30cf9667-1228-466d-a968-af1c820ef143
 
 	column Column1
 		dataType: string

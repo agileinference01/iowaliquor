@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "c928fe65a4b72641e956",
+  "name": "ce02a19627b2d2411c67",
   "position": {
-    "x": 0.5638766519824685,
+    "x": 165.18703241895261,
     "y": 0,
-    "z": 27000,
-    "height": 268.40528634361232,
-    "width": 267.27753303964755,
-    "tabOrder": 2000
+    "z": 22000,
+    "height": 60.149625935162092,
+    "width": 61.047381546134659,
+    "tabOrder": 22000
   },
   "visual": {
     "visualType": "shape",
@@ -18,14 +18,14 @@
             "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'rectangleRounded'"
+                  "Value": "'tabCutCorner'"
                 }
               }
             },
-            "rectangleRoundedCurve": {
+            "tabCutCornerSnipSizeTopRight": {
               "expr": {
                 "Literal": {
-                  "Value": "5L"
+                  "Value": "100L"
                 }
               }
             }
@@ -41,11 +41,46 @@
                   "Value": "0L"
                 }
               }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "180D"
+                }
+              }
             }
           }
         }
       ],
       "fill": [
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": -0.25
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "25D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "outline": [
         {
           "properties": {
             "show": {
@@ -61,6 +96,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "2cdabc27d021d20584bd",
   "howCreated": "InsertVisualButton"
 }

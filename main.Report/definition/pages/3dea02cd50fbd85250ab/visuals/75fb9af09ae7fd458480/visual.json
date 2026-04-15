@@ -4,10 +4,10 @@
   "position": {
     "x": 0,
     "y": 30.523690773067329,
-    "z": 21000,
-    "height": 65.536159600997507,
+    "z": 2000,
+    "height": 689.4763092269327,
     "width": 30.523690773067329,
-    "tabOrder": 22000
+    "tabOrder": 20000
   },
   "visual": {
     "visualType": "shape",
@@ -57,6 +57,13 @@
                       "Percent": -0.25
                     }
                   }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "25D"
                 }
               }
             }

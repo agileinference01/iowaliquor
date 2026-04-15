@@ -4,10 +4,10 @@
   "position": {
     "x": 609.71246136020477,
     "y": 0,
-    "z": 13000,
+    "z": 14000,
     "height": 59.559183673469384,
     "width": 163.00408163265305,
-    "tabOrder": 14000
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "slicer",
@@ -81,7 +81,7 @@
                 "color": {
                   "expr": {
                     "ThemeDataColor": {
-                      "ColorId": 0,
+                      "ColorId": 1,
                       "Percent": 0
                     }
                   }
@@ -102,6 +102,18 @@
               }
             },
             "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "background": {
               "solid": {
                 "color": {
                   "expr": {

@@ -252,6 +252,15 @@ table GoalMain
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column RefreshDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: daadd15b-00d0-4101-86d1-4d3c06ab6bdd
+		summarizeBy: none
+		sourceColumn: RefreshDate
+
+		annotation SummarizationSetBy = Automatic
+
 	partition GoalMain = m
 		mode: import
 		source =
@@ -264,9 +273,11 @@ table GoalMain
 				    #"Added Custom1" = Table.AddColumn(#"Changed Type", "sale_dollars_goal", each [bottles_sold_goal]*[state_bottle_retail]),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"sale_dollars_goal", type number}}),
 				    #"Added Custom2" = Table.AddColumn(#"Changed Type1", "volume_sold_liters_goal", each ([volume_sold_liters]/[bottles_sold])*[bottles_sold_goal]),
-				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"volume_sold_liters_goal", type number}})
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"volume_sold_liters_goal", type number}}),
+				    #"Added Custom3" = Table.AddColumn(#"Changed Type2", "RefreshDate", each DateTime.LocalNow()),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Added Custom3",{{"RefreshDate", type datetime}})
 				in
-				    #"Changed Type2"
+				    #"Changed Type3"
 
 	annotation PBI_NavigationStepName = Navigation
 

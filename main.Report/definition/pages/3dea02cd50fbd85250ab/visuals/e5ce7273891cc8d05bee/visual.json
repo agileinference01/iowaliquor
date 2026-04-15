@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "e5ce7273891cc8d05bee",
   "position": {
-    "x": 1.1277533039647594,
+    "x": 0.0025965156653073862,
     "y": 0,
-    "z": 27000,
-    "height": 268.40528634361232,
-    "width": 267.27753303964755,
+    "z": 28500,
+    "height": 250,
+    "width": 250,
     "tabOrder": 2000
   },
   "visual": {
@@ -18,7 +18,7 @@
             "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'rectangleRounded'"
+                  "Value": "'rectangle'"
                 }
               }
             },
@@ -52,6 +52,50 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "shadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "weight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
