@@ -95,7 +95,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''DimProducts''[item_description]'"
+                                "Value": "'''DimCategory''[category_name]'"
                               }
                             }
                           ]
@@ -123,7 +123,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''DimProducts''[item_description]'"
+                                      "Value": "'''DimCategory''[category_name]'"
                                     }
                                   }
                                 ]
@@ -147,7 +147,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "item_description"
+                            "0": "category_name"
                           }
                         ]
                       }

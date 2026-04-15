@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "46c06c1d77c8657c30c0",
   "position": {
-    "x": 173.6740088105727,
-    "y": 405.99118942731275,
+    "x": 177.75561097256858,
+    "y": 405.785536159601,
     "z": 4000,
-    "height": 307.87665198237886,
-    "width": 894.30837004405282,
+    "height": 307.93017456359104,
+    "width": 895.0623441396508,
     "tabOrder": 0
   },
   "visual": {
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimCategory"
+                      "Entity": "DimVendors"
                     }
                   },
-                  "Property": "category_name"
+                  "Property": "vendor_name"
                 }
               },
-              "queryRef": "DimCategory.category_name",
-              "nativeQueryRef": "category_name",
+              "queryRef": "DimVendors.vendor_name",
+              "nativeQueryRef": "vendor_name",
               "active": true,
-              "displayName": "category_name"
+              "displayName": "vendor_name"
             },
             {
               "field": {
@@ -52,16 +52,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimProducts"
+                      "Entity": "DimCategory"
                     }
                   },
-                  "Property": "item_description"
+                  "Property": "category_name"
                 }
               },
-              "queryRef": "DimProducts.item_description",
-              "nativeQueryRef": "item_description",
+              "queryRef": "DimCategory.category_name",
+              "nativeQueryRef": "category_name",
               "active": false,
-              "displayName": "item_description"
+              "displayName": "category_name"
             }
           ],
           "fieldParameters": [
@@ -215,10 +215,10 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "DimCategory"
+                    "Entity": "DimVendors"
                   }
                 },
-                "Property": "category_name"
+                "Property": "vendor_name"
               }
             },
             "direction": "Ascending"
@@ -234,7 +234,7 @@
         "levels": [
           {
             "queryRefs": [
-              "DimCategory.category_name"
+              "DimVendors.vendor_name"
             ],
             "isCollapsed": true,
             "identityKeys": [
@@ -242,10 +242,10 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimCategory"
+                      "Entity": "DimVendors"
                     }
                   },
-                  "Property": "category_name"
+                  "Property": "vendor_name"
                 }
               }
             ],
@@ -256,16 +256,74 @@
               "DimStores.store_name"
             ],
             "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimStores"
+                    }
+                  },
+                  "Property": "store_name"
+                }
+              }
+            ],
             "isPinned": true
           },
           {
             "queryRefs": [
-              "DimProducts.item_description"
+              "DimCategory.category_name"
             ],
-            "isCollapsed": true
+            "isCollapsed": true,
+            "isPinned": true
           }
         ],
-        "root": {}
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'45TH PARALLEL SPIRITS'"
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'AJ''S LIQUOR II'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'3 BADGE CORPORATION'"
+                  }
+                }
+              ],
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'AJ''S LIQUOR II'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            }
+          ]
+        }
       }
     ],
     "objects": {

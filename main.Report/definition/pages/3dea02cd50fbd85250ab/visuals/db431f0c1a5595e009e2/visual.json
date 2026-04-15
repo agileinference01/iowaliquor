@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "db431f0c1a5595e009e2",
   "position": {
-    "x": 0.0025965156652576482,
-    "y": 5.63876651982379,
+    "x": 4.5045975369945239,
+    "y": 3.9641708893091923,
     "z": 29000,
-    "height": 34.960352422907491,
-    "width": 250,
+    "height": 36.807980049875312,
+    "width": 245.08728179551122,
     "tabOrder": 3000
   },
   "visual": {
@@ -94,7 +94,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Sales'"
+                                "Value": "'Bottles Sold'"
                               }
                             }
                           ]
@@ -154,6 +154,27 @@
         {
           "properties": {
             "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
               "expr": {
                 "Literal": {
                   "Value": "0D"

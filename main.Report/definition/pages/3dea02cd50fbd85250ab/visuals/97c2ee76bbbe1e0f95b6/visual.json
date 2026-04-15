@@ -88,7 +88,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''DimCategory''[category_name]'"
+                                "Value": "'''DimStores''[store_name]'"
                               }
                             }
                           ]
@@ -116,7 +116,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''DimCategory''[category_name]'"
+                                      "Value": "'''DimStores''[store_name]'"
                                     }
                                   }
                                 ]
@@ -140,7 +140,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "category_name"
+                            "0": "store_name"
                           }
                         ]
                       }

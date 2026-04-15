@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "926a081458a3c0b49407",
+  "name": "7dadadf05d39204b71c8",
   "position": {
-    "x": 0.0025965156652576482,
-    "y": 42.854625550660714,
+    "x": 4.5895236969919351,
+    "y": 47.4556750268966,
     "z": 30500,
-    "height": 101.49779735682819,
-    "width": 250,
-    "tabOrder": 0
+    "height": 87.980049875311721,
+    "width": 241.49625935162095,
+    "tabOrder": 24005
   },
   "visual": {
     "visualType": "cardVisual",
@@ -193,6 +193,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "detailFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
             }
           },
           "selector": {
@@ -298,7 +305,7 @@
             "detailFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "9D"
                 }
               }
             },
@@ -796,7 +803,7 @@
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "5D"
+                  "Value": "3D"
                 }
               }
             },
@@ -840,5 +847,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "fde9c5bd37203842d6b5"
+  "parentGroupName": "93d0e75e6bc376d7941e"
 }

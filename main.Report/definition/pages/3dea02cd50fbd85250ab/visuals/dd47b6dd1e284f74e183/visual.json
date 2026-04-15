@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dd47b6dd1e284f74e183",
   "position": {
-    "x": 832.04911742133527,
-    "y": 104.12893323100536,
+    "x": 832.219451371571,
+    "y": 104.13965087281795,
     "z": 16000,
-    "height": 255.41059094397542,
-    "width": 432.23330775134303,
+    "height": 249.57605985037407,
+    "width": 431.82044887780546,
     "tabOrder": 15000
   },
   "visual": {
@@ -20,15 +20,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "DimCategory"
+                      "Entity": "DimStores"
                     }
                   },
-                  "Property": "category_name"
+                  "Property": "store_name"
                 }
               },
-              "queryRef": "DimCategory.category_name",
-              "nativeQueryRef": "category_name",
-              "displayName": "category_name"
+              "queryRef": "DimStores.store_name",
+              "nativeQueryRef": "store_name",
+              "displayName": "store_name"
             }
           ],
           "fieldParameters": [
