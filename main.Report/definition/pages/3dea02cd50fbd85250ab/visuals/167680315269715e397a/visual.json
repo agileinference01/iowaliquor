@@ -7,7 +7,7 @@
     "z": 32000,
     "height": 114.91271820448877,
     "width": 245.08728179551122,
-    "tabOrder": 24002
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "areaChart",
@@ -219,7 +219,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#FF0000'"
+                      "Value": "'#3B5360'"
                     }
                   }
                 }
@@ -237,7 +237,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#004C5D'"
+                      "Value": "'#0091EA'"
                     }
                   }
                 }

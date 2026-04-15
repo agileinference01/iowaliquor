@@ -50,7 +50,8 @@
   },
   "publicCustomVisuals": [
     "Sunburst1445472000808",
-    "TornadoChart1452517688218"
+    "TornadoChart1452517688218",
+    "deneb7E15AEF80B9E4D4F8E12924291ECE89A"
   ],
   "resourcePackages": [
     {
@@ -85,8 +86,12 @@
     "useStylableVisualContainerHeader": true,
     "exportDataMode": "AllowSummarized",
     "defaultDrillFilterOtherVisuals": true,
-    "allowChangeFilterTypes": true,
+    "allowInlineExploration": true,
     "useEnhancedTooltips": true,
-    "useDefaultAggregateDisplayName": true
+    "disableFilterPaneSearch": true,
+    "useDefaultAggregateDisplayName": true,
+    "queryLimitOption": "None",
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
   }
 }

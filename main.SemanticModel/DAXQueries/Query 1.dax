@@ -66,22 +66,22 @@ DEFINE
 			
 	FUNCTION DirectionColor = (_pct : NUMERIC) =>
 		SWITCH(TRUE(),
-		_pct >= 1, "#00802b",
-		_pct >=.95, "#b38600",
-		"#cc0000"
+		_pct >= 1, "#008053",
+		_pct >=.95, "#FFCE00",
+		"#FD4F43"
 		)
 
 	FUNCTION DeltaColor = (_pct : NUMERIC, _sel : STRING) =>
 		VAR _dir = MeasureDirection(_sel)
 		VAR _pos =
 		SWITCH(TRUE(),
-		_pct >= 0, "#00802b",
-		"#cc0000"
+		_pct >= 0, "#008053",
+		"#FD4F43"
 		)
 		VAR _neg =
 		SWITCH(TRUE(),
-		_pct >= 0, "#cc0000",
-		"#00802b"
+		_pct >= 0, "#FD4F43",
+		"#008053"
 		)
 		RETURN
 		if(_dir = "Positive", _pos, _neg)

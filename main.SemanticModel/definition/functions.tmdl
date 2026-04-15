@@ -94,9 +94,9 @@ function DirectionArrow =
 function DirectionColor =
 		(_pct : NUMERIC) =>
 				SWITCH(TRUE(),
-				_pct >= 1, "#00802b",
-				_pct >=.95, "#b38600",
-				"#cc0000"
+				_pct >= 1, "#008053",
+				_pct >=.95, "#FFCE00",
+				"#FD4F43"
 				)
 	lineageTag: 23e37ec5-5f77-44a0-96c1-972606999d9b
 
@@ -122,13 +122,13 @@ function DeltaColor =
 				VAR _dir = MeasureDirection(_sel)
 				VAR _pos =
 				SWITCH(TRUE(),
-				_pct >= 0, "#00802b",
-				"#cc0000"
+				_pct >= 0, "#008053",
+				"#FD4F43"
 				)
 				VAR _neg =
 				SWITCH(TRUE(),
-				_pct >= 0, "#cc0000",
-				"#00802b"
+				_pct >= 0, "#FD4F43",
+				"#008053"
 				)
 				RETURN
 				if(_dir = "Positive", _pos, _neg)
