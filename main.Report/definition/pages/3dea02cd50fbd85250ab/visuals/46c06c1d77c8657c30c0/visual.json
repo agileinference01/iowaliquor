@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "46c06c1d77c8657c30c0",
   "position": {
-    "x": 321.77300417413909,
-    "y": 395.14888909728762,
+    "x": 294.46384039900249,
+    "y": 395.01246882793015,
     "z": 3000,
     "height": 307.93017456359104,
-    "width": 895.0623441396508,
+    "width": 781.94513715710718,
     "tabOrder": 0
   },
   "visual": {
@@ -366,7 +366,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "8D"
                 }
               }
             },
@@ -407,7 +407,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "8D"
                 }
               }
             }
@@ -434,7 +434,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "232.89405703970382D"
+                  "Value": "145.77086421557505D"
                 }
               }
             }
@@ -854,7 +854,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "8D"
                 }
               }
             }
@@ -980,7 +980,14 @@
             "section": {
               "expr": {
                 "Literal": {
-                  "Value": "'bd6f9788b3a37e91a9f8'"
+                  "Value": "'db1e92a038c900ed101c'"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Canvas'"
                 }
               }
             }

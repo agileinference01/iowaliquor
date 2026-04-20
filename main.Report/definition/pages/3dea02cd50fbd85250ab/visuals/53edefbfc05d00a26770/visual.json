@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "1b82b0257a67cd5d8dc0",
+  "name": "53edefbfc05d00a26770",
   "position": {
-    "x": 75.411471321695757,
+    "x": 33.216957605985037,
     "y": 521.59600997506232,
-    "z": 17000,
+    "z": 23003,
     "height": 29.625935162094763,
     "width": 30.523690773067329,
-    "tabOrder": 18000
+    "tabOrder": 24004
   },
   "visual": {
     "visualType": "actionButton",
@@ -18,7 +18,7 @@
             "shapeType": {
               "expr": {
                 "Literal": {
-                  "Value": "'information'"
+                  "Value": "'help'"
                 }
               }
             },
@@ -75,6 +75,13 @@
                   "Value": "0L"
                 }
               }
+            },
+            "shapeType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'back'"
+                }
+              }
             }
           },
           "selector": {
@@ -110,7 +117,7 @@
             "type": {
               "expr": {
                 "Literal": {
-                  "Value": "'WebUrl'"
+                  "Value": "'Qna'"
                 }
               }
             },
