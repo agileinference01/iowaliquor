@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
   "name": "c6ef37447487aca41581",
   "position": {
     "x": 4.5045975369945239,
@@ -94,7 +94,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Sales'"
+                                "Value": "'Bottle Volume Sold'"
                               }
                             }
                           ]

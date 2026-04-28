@@ -1,0 +1,119 @@
+table ForecastBottlesSold
+	lineageTag: 998071cb-77db-4644-aa33-4b9b8456ae23
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ddaea4e8-b62e-41d1-a69f-308b64e01f09
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column bottles_sold_forecast
+		dataType: string
+		lineageTag: 2f86cdae-63e4-4e2d-8967-b0032fd33bdf
+		summarizeBy: none
+		sourceColumn: bottles_sold_forecast
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_lower_95
+		dataType: string
+		lineageTag: 2b998b1c-50fe-42f3-a023-dac40c2720b0
+		summarizeBy: none
+		sourceColumn: forecast_lower_95
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_upper_95
+		dataType: string
+		lineageTag: 378c05c9-4864-4501-9670-97a5006dbb4f
+		summarizeBy: none
+		sourceColumn: forecast_upper_95
+
+		annotation SummarizationSetBy = Automatic
+
+	column model
+		dataType: string
+		lineageTag: b38fd773-7215-425f-8ee5-7f9e23c8fd71
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ForecastBottlesSold = m
+		mode: import
+		source =
+				let
+				    PythonResult = Python.Execute(
+				"from pathlib import Path
+				import numpy as np
+				import pandas as pd
+				from statsmodels.tsa.holtwinters import ExponentialSmoothing
+				
+				file_path = Path(r'C:\Users\PHUyJo3\OneDrive - NESTLE\Documents\projects\data\iowa\GoalMain.csv')
+				
+				df = pd.read_csv(file_path, usecols=['date', 'bottles_sold'])
+				df['date'] = pd.to_datetime(df['date'], errors='coerce')
+				df['bottles_sold'] = pd.to_numeric(df['bottles_sold'], errors='coerce')
+				df = df.dropna(subset=['date', 'bottles_sold'])
+				
+				monthly = (
+				    df.set_index('date')['bottles_sold']
+				      .resample('MS')
+				      .sum()
+				      .asfreq('MS')
+				      .fillna(0.0)
+				      .astype(float)
+				)
+				
+				if len(monthly) < 3:
+				    result = pd.DataFrame({
+				        'status': ['error'],
+				        'message': [f'Need at least 3 monthly points, got {len(monthly)}'],
+				        'rows_read': [len(df)],
+				        'min_date': [str(df['date'].min()) if len(df) else None],
+				        'max_date': [str(df['date'].max()) if len(df) else None]
+				    })
+				else:
+				    seasonal = 'add' if len(monthly) >= 24 else None
+				    seasonal_periods = 12 if seasonal else None
+				
+				    fitted = ExponentialSmoothing(
+				        monthly,
+				        trend='add',
+				        seasonal=seasonal,
+				        seasonal_periods=seasonal_periods,
+				        initialization_method='estimated'
+				    ).fit(optimized=True)
+				
+				    future = fitted.forecast(12)
+				    residual_std = (monthly - fitted.fittedvalues).std(ddof=1)
+				
+				    result = pd.DataFrame({
+				        'date': pd.to_datetime(future.index).strftime('%Y-%m-%d'),
+				        'bottles_sold_forecast': future.values,
+				        'forecast_lower_95': np.maximum(future.values - 1.96 * residual_std, 0),
+				        'forecast_upper_95': future.values + 1.96 * residual_std,
+				        'model': 'HoltWintersAdditive'
+				    })"
+				    ),
+				    ResultTable = PythonResult{[Name="result"]}[Value],
+				    Final =
+				        if Table.HasColumns(ResultTable, "date") then
+				            Table.TransformColumns(
+				                ResultTable,
+				                {{"date", each try Date.FromText(Text.From(_)) otherwise null, type nullable date}}
+				            )
+				        else
+				            ResultTable
+				in
+				    Final
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -16,7 +16,7 @@ queryGroup 'Transform File from iowa\Helper Queries'
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["FactMain","Sample File","Parameter1","Transform Sample File","Transform File","_Intervals","_Measures","DimStores","DimCategory","DimProducts","DimVendors","DmPacks","DimCounty","_Metrics","GoalMain"]
+annotation PBI_QueryOrder = ["FactMain","Sample File","Parameter1","Transform Sample File","Transform File","_Intervals","_Measures","DimStores","DimCategory","DimProducts","DimVendors","DmPacks","DimCounty","_Metrics","GoalMain","ForecastBottlesSold"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -37,6 +37,7 @@ ref table 'Feature Parameters'
 ref table 'Level 1 Parameter'
 ref table 'Level 2 Parameter'
 ref table 'Level 3 Parameter'
+ref table ForecastBottlesSold
 
 ref cultureInfo en-US
 
